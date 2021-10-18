@@ -1,0 +1,10 @@
+.place {
+    max-width: 282px;
+    min-height: 361px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 4%;
+    overflow: hidden;
+}
