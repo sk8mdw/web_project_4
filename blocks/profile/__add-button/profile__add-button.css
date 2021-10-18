@@ -6,5 +6,5 @@
     background-image: url(../../../images/add-button.png);
     background-repeat: no-repeat;
     background-position: center;
-    align-self: flex-end;
+    margin-right: 0;
 }

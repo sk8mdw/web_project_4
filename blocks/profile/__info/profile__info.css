@@ -1,7 +1,6 @@
 .profile__info {
     display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-between; */
     max-width: 415px;
     min-height: 77px;
     width: 100%;
