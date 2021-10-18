@@ -1,7 +1,14 @@
 .header {
+    display: flex;
     max-width: 880px;
     width: 100%;
-    /* max-height: 74px; */
     margin: 45px auto 40px;
+    box-sizing: border-box;
     border-bottom: 1px solid #545454;
+}
+
+@media screen and (max-width: 880px) {
+    .header {
+        width: calc(100% - 48px);
+    }
 }
