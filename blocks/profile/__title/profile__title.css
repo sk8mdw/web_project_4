@@ -4,3 +4,15 @@
     line-height: 1.21;
     margin: 0;
 }
+
+@media screen and (max-width: 900px) {
+    .profile__title {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .profile__title {
+        font-size: 14px;
+    }
+}

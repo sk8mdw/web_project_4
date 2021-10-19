@@ -8,3 +8,16 @@
     background-position: center;
     margin-right: 0;
 }
+
+@media screen and (max-width: 900px) {
+    .profile__add-button {
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .profile__add-button {
+        width: 282px;
+        margin: auto;
+    }
+}
