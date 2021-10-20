@@ -6,6 +6,7 @@
     background-image: url(../../../images/add-button.png);
     background-repeat: no-repeat;
     background-position: center;
+    box-sizing: border-box;
     margin-right: 0;
 }
 

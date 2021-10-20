@@ -28,9 +28,9 @@
                         <h1 class="profile__name">Jacques Cousteau</h1>
                         <p class="profile__title">Explorer</p>
                     </div>
-                    <button class="profile profile__edit-button"></button>
+                    <button type="button" class="button profile__edit-button"></button>
                 </div>
-                <button class="profile profile__add-button"></button>
+                <button type="button" class="button profile__add-button"></button>
             </section>
 
             <div class="places__container">
@@ -39,7 +39,7 @@
                     <img class="place__image" src="./images/yosemite_valley.jpg" alt="Yosemite Valley">
                     <div class="place__text">
                         <h2 class="place__title">Yosemite Valley</h2>
-                        <button class="place__like-button" </button>
+                        <button class="button place__like-button" </button>
                     </div>
                 </article>
 
@@ -47,7 +47,7 @@
                     <img class="place__image" src="./images/lake_louise.jpg" alt="Lake Louise">
                     <div class="place__text">
                         <h2 class="place__title">Lake Louise</h2>
-                        <button class="place__like-button" </button>
+                        <button class="button place__like-button" </button>
                     </div>
                 </article>
 
@@ -55,7 +55,7 @@
                     <img class="place__image" src="./images/bald_mountains.jpg" alt="Bald Mountains">
                     <div class="place__text">
                         <h2 class="place__title">Bald Mountains</h2>
-                        <button class="place__like-button" </button>
+                        <button class="button place__like-button" </button>
                     </div>
                 </article>
 
@@ -63,7 +63,7 @@
                     <img class="place__image" src="./images/latemar.jpg" alt="Latemar">
                     <div class="place__text">
                         <h2 class="place__title">Latemar</h2>
-                        <button class="place__like-button" </button>
+                        <button class="button place__like-button" </button>
                     </div>
                 </article>
 
@@ -71,7 +71,7 @@
                     <img class="place__image" src="./images/vanoise_national.jpg" alt="Vanoise National Park">
                     <div class="place__text">
                         <h2 class="place__title">Vanoise National Park</h2>
-                        <button class="place__like-button" </button>
+                        <button class="button place__like-button" </button>
                     </div>
                 </article>
 
@@ -79,7 +79,7 @@
                     <img class="place__image" src="./images/lago_di_braies.jpg" alt="Lago di Braies">
                     <div class="place__text">
                         <h2 class="place__title">Lago di Braies</h2>
-                        <button class="place__like-button" </button>
+                        <button class="button place__like-button" </button>
                     </div>
                 </article>
 
@@ -91,8 +91,25 @@
         </footer>
         </main>
 
-        <script src="" async defer></script>
+        <script src="script.js"></script>
     </div>
+
+
+    <div class="modal">
+        <div class="modal">
+            <form action="#" class="popup__form" name="profile">
+                <button type="button" class="button popup__close-button"></button>
+                <h3 class="popup__title">Edit Profile</h3>
+                <input type="text" name="name" id="name" class="popup__input popup__input_name" placeholder="Name">
+                <input type="text" name="title" id="title" class="popup__input title"
+                    placeholder="Title">
+                <button type="submit" class="button popup__save-button">Save</button>
+            </form>
+        </div>
+
+
+    </div>
+
 </body>
 
 </html>
