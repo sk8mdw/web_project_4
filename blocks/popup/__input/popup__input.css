@@ -1,0 +1,12 @@
+.popup__input {
+    position: relative;
+    max-width: 358px;
+    min-height: 27.5px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    margin: 0 0 29.5px 36px;
+}
+
+.popup__input:last-of-type {
+    margin-bottom: 0;
+}
