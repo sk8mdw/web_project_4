@@ -26,11 +26,6 @@
 @import url(../blocks/button/_close/button_close.css);
 @import url(../blocks/button/_save/button_save.css);
 @import url(../blocks/popup/popup.css);
-<<<<<<< HEAD
-@import url(../blocks/popup/__container/pop__container.css);
-@import url(../blocks/popup/__title/popup__title.css);
-=======
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
->>>>>>> feature/modal
