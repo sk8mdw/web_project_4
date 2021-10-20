@@ -12,3 +12,12 @@
     top: -55px;
     right: -40px;
 }
+
+@media screen and (max-width: 512px) {
+    .button_close {
+        height: 26px;
+        width: 26px;
+        right: 0;
+        top: -75px;
+    }
+}
