@@ -1,0 +1,14 @@
+.button_close {
+    background-image: url(../../../images/close_icon.svg);
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    /* color: #ffffff; */
+    height: 40px;
+    width: 40px;
+    position: relative;
+    float: right;
+    top: -55px;
+    right: -40px;
+}
