@@ -4,12 +4,11 @@
     background-position: center;
     background-repeat: no-repeat;
     border: none;
-    /* color: #ffffff; */
     height: 40px;
     width: 40px;
     position: relative;
     float: right;
-    top: -55px;
+    top: -70px;
     right: -40px;
 }
 
@@ -17,7 +16,7 @@
     .button_close {
         height: 26px;
         width: 26px;
-        right: 0;
-        top: -75px;
+        right: 10px;
+        top: -65px;
     }
 }
