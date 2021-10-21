@@ -4,7 +4,7 @@
 
 The first of three stages of a website that allows users to add, remove, and "like" images.
 
-## Technologies uesd:
+## Technologies used:
 
 - HTML
 - CSS
