@@ -4,21 +4,19 @@ let editFormEl = document.querySelector(".popup__form");
 
 let editButton = document.querySelector(".profile__edit-button");
 
-let closeButton = document.querySelector(".popup__close-button");
+let closeButton = document.querySelector(".button_close");
 
 let nameInput = document.querySelector("#name");
-let occupationInput = document.querySelector("#occupation");
+let titleInput = document.querySelector("#title");
 
 let name = document.querySelector(".profile__name");
-let occupation = document.querySelector(".profile__description");
+let title = document.querySelector(".profile__title");
 
 function handleFormOpen() {
   popupEl.classList.add("popup_opened");
   nameInput.value = name.textContent;
-  occupationInput.value = occupation.textContent;
+  titleInput.value = title.textContent;
 }
-
-console.log(popupEl.classList);
 
 function handleFormClose() {
   popupEl.classList.remove("popup_opened");
@@ -28,16 +26,16 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
 
   nameInputValue = nameInput.value;
-  occupationInputValue = occupationInput.value;
+  titleInputValue = titleInput.value;
 
   name.textContent = nameInputValue;
-  occupation.textContent = occupationInputValue;
+  title.textContent = titleInputValue;
 
   handleFormClose();
 }
 
 editButton.addEventListener("click", handleFormOpen);
 
-// closeButton.addEventListener("click", handleFormClose);
+closeButton.addEventListener("click", handleFormClose);
 
-// editFormEl.addEventListener("submit", handleFormSubmit);
+editFormEl.addEventListener("submit", handleFormSubmit);
