@@ -4,39 +4,39 @@ let editFormEl = document.querySelector(".popup__form");
 
 let editButton = document.querySelector(".profile__edit-button");
 
-// let closeButton = document.querySelector(".popup__close-button");
+let closeButton = document.querySelector(".popup__close-button");
 
-console.log(editButton);
+let nameInput = document.querySelector("#name");
+let occupationInput = document.querySelector("#occupation");
 
-// let nameInput = document.querySelector("#name");
-// let occupationInput = document.querySelector("#occupation");
+let name = document.querySelector(".profile__name");
+let occupation = document.querySelector(".profile__description");
 
-// let name = document.querySelector(".profile__name");
-// let occupation = document.querySelector(".profile__description");
+function handleFormOpen() {
+  popupEl.classList.add("popup_opened");
+  nameInput.value = name.textContent;
+  occupationInput.value = occupation.textContent;
+}
 
-// function handleFormOpen() {
-//   popupEl.classList.add("popup_opened");
-//   nameInput.value = name.textContent;
-//   occupationInput.value = occupation.textContent;
-// }
+console.log(popupEl.classList);
 
-// function handleFormClose() {
-//   popupEl.classList.remove("popup_opened");
-// }
+function handleFormClose() {
+  popupEl.classList.remove("popup_opened");
+}
 
-// function handleFormSubmit(evt) {
-//   evt.preventDefault();
+function handleFormSubmit(evt) {
+  evt.preventDefault();
 
-//   nameInputValue = nameInput.value;
-//   occupationInputValue = occupationInput.value;
+  nameInputValue = nameInput.value;
+  occupationInputValue = occupationInput.value;
 
-//   name.textContent = nameInputValue;
-//   occupation.textContent = occupationInputValue;
+  name.textContent = nameInputValue;
+  occupation.textContent = occupationInputValue;
 
-//   handleFormClose();
-// }
+  handleFormClose();
+}
 
-// editButton.addEventListener("click", handleFormOpen);
+editButton.addEventListener("click", handleFormOpen);
 
 // closeButton.addEventListener("click", handleFormClose);
 
