@@ -1,10 +1,7 @@
 .place__text {
     display: flex;
-    /* flex-direction: column; */
-    /* justify-content: center; */
     align-items: center;
     justify-content: space-between;
     margin: 25px 0 0 21px;
     max-width: 246px;
-    /* align-self: center; */
 }

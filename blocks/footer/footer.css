@@ -1,9 +1,6 @@
 .footer {
     max-width: 318px;
     margin: 68px 0 60px 0;
-    /* display: flex; */
-    /* justify-content: flex-start; */
-    /* position: relative; */
 }
 
 @media screen and (max-width: 950px) {

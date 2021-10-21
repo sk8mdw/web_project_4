@@ -1,10 +1,8 @@
 .button {
-    transition: opacity 0.2s linear;
-    /* margin: 0; */
-    /* padding: 0; */
-  }
-  
-  .button:hover {
-    opacity: 0.6;
-    cursor: pointer;
-  }
+  transition: opacity 0.2s linear;
+}
+
+.button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

@@ -1,6 +1,4 @@
 .place__like-button {
-    /* display: flex; */
-    /* align-items: center; */
     background-image: url(../../../images/like_button.svg);
     background-color: #ffffff;
     height: 19px;
