@@ -9,8 +9,8 @@ let title = document.querySelector(".profile__title");
 
 function formOpen() {
   popupEl.classList.add("popup_opened");
-  nameInput.value = "";
-  titleInput.value = "";
+  nameInput.value = name.textContent;
+  titleInput.value = title.textContent;
 }
 
 function formClose() {
@@ -19,11 +19,9 @@ function formClose() {
 
 function formSubmit(evt) {
   evt.preventDefault();
-  nameInputValue = nameInput.value;
-  titleInputValue = titleInput.value;
 
-  name.textContent = nameInputValue;
-  title.textContent = titleInputValue;
+  name.textContent = nameInput.value;
+  title.textContent = titleInput.value;
 
   formClose();
 }
