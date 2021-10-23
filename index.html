@@ -7,7 +7,6 @@
     <title>Around the U.S.</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -15,7 +14,7 @@
     <div class="page__wrapper">
 
         <header class="header">
-            <img src="images/logo.png" class="header__logo" alt="logo image">
+            <img src="images/logo.svg" class="header__logo" alt="logo image">
         </header>
 
         <main>
@@ -31,59 +30,56 @@
                 <button type="button" class="button profile__add-button"></button>
             </section>
 
-            <div class="places">
-                <section class="places__container">
-                    <article class="place">
-                        <img class="place__image" src="./images/yosemite_valley.jpg" alt="Yosemite Valley">
-                        <div class="place__text">
-                            <h2 class="place__title">Yosemite Valley</h2>
-                            <button class="button place__like-button"></button>
-                        </div>
-                    </article>
+            <section class="places">
+                <article class="place">
+                    <img class="place__image" src="./images/yosemite_valley.jpg" alt="Yosemite Valley">
+                    <div class="place__text">
+                        <h2 class="place__title">Yosemite Valley</h2>
+                        <button type="button" class="button place__like-button"></button>
+                    </div>
+                </article>
 
-                    <article class="place">
-                        <img class="place__image" src="./images/lake_louise.jpg" alt="Lake Louise">
-                        <div class="place__text">
-                            <h2 class="place__title">Lake Louise</h2>
-                            <button class="button place__like-button"></button>
-                        </div>
-                    </article>
+                <article class="place">
+                    <img class="place__image" src="./images/lake_louise.jpg" alt="Lake Louise">
+                    <div class="place__text">
+                        <h2 class="place__title">Lake Louise</h2>
+                        <button type="button" class="button place__like-button"></button>
+                    </div>
+                </article>
 
-                    <article class="place">
-                        <img class="place__image" src="./images/bald_mountains.jpg" alt="Bald Mountains">
-                        <div class="place__text">
-                            <h2 class="place__title">Bald Mountains</h2>
-                            <button class="button place__like-button"></button>
-                        </div>
-                    </article>
+                <article class="place">
+                    <img class="place__image" src="./images/bald_mountains.jpg" alt="Bald Mountains">
+                    <div class="place__text">
+                        <h2 class="place__title">Bald Mountains</h2>
+                        <button type="button" class="button place__like-button"></button>
+                    </div>
+                </article>
 
-                    <article class="place">
-                        <img class="place__image" src="./images/latemar.jpg" alt="Latemar">
-                        <div class="place__text">
-                            <h2 class="place__title">Latemar</h2>
-                            <button class="button place__like-button"></button>
-                        </div>
-                    </article>
+                <article class="place">
+                    <img class="place__image" src="./images/latemar.jpg" alt="Latemar">
+                    <div class="place__text">
+                        <h2 class="place__title">Latemar</h2>
+                        <button type="button" class="button place__like-button"></button>
+                    </div>
+                </article>
 
-                    <article class="place">
-                        <img class="place__image" src="./images/vanoise_national.jpg" alt="Vanoise National Park">
-                        <div class="place__text">
-                            <h2 class="place__title">Vanoise National Park</h2>
-                            <button class="button place__like-button"></button>
-                        </div>
-                    </article>
+                <article class="place">
+                    <img class="place__image" src="./images/vanoise_national.jpg" alt="Vanoise National Park">
+                    <div class="place__text">
+                        <h2 class="place__title">Vanoise National Park</h2>
+                        <button type="button" class="button place__like-button"></button>
+                    </div>
+                </article>
 
-                    <article class="place">
-                        <img class="place__image" src="./images/lago_di_braies.jpg" alt="Lago di Braies">
-                        <div class="place__text">
-                            <h2 class="place__title">Lago di Braies</h2>
-                            <button class="button place__like-button"></button>
-                        </div>
-                    </article>
+                <article class="place">
+                    <img class="place__image" src="./images/lago_di_braies.jpg" alt="Lago di Braies">
+                    <div class="place__text">
+                        <h2 class="place__title">Lago di Braies</h2>
+                        <button type="button" class="button place__like-button"></button>
+                    </div>
+                </article>
 
-                </section>
-
-            </div>
+            </section>
 
             <footer class="footer">
                 <p class="footer__text">&#x000A9; 2021 Around The U.S.</p>
@@ -96,16 +92,17 @@
     <div class="popup">
         <div class="popup__container">
             <form action="#" class="popup__form" name="profile">
-                <button type="button" class="button button_close"></button>
+                <button type="button" class="button popup__close-button"></button>
                 <h3 class="popup__title">Edit Profile</h3>
-                <input type="text" name="name" id="name" class="popup__input popup__input_name" placeholder="Name">
-                <input type="text" name="title" id="title" class="popup__input popup__input_title"
+                <input type="text" name="name" id="name" class="popup__input popup__input_text_name" placeholder="Name">
+                <input type="text" name="title" id="title" class="popup__input popup__input_text_title"
                     placeholder="About Me">
-                <button type="submit" class="button button_save">Save</button>
+                <button type="submit" class="button popup__save-button">Save</button>
             </form>
+            
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
 
 </body>
 
