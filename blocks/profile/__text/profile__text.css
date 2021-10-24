@@ -1,7 +1,17 @@
+.profile__text {
+    display: grid;
+    grid-template-areas: "name edit-button" "title title";
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 18px;
+    row-gap: 16px;
+    align-content: center;
+    justify-items: start;
+}
+
 @media screen and (max-width: 480px) {
     .profile__text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        column-gap: 10px;
+        row-gap: 14px;
     }
 }

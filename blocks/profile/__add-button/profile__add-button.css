@@ -7,17 +7,17 @@
     background-position: center;
     border-radius: 2px;
     box-sizing: border-box;
-    margin-left: calc(0% + 150px);
+    place-self: center flex-end;
     padding: 0;
 }
 
 @media screen and (max-width: 900px) {
     .profile__add-button {
-        margin: 36px auto 36px;
+        margin: 36px auto 0;
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
     .profile__add-button {
         width: 282px;
     }

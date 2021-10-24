@@ -10,12 +10,15 @@
 
 @media screen and (max-width: 900px) {
     .places {
-        max-width: 629px;
+        grid-template-columns: repeat(2, 282px);
+        max-width: 578px;
+        column-gap: 14px;
     }
 }
 
-@media screen and (max-width: 655px) {
+@media screen and (max-width: 675px) {
     .places {
+        grid-template-columns: 1fr;
         max-width: 282px;
     }
 }
