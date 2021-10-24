@@ -7,6 +7,7 @@
     overflow: hidden;
     max-width: 500px;
     grid-area: name;
+    margin: 0;
 }
 
 @media screen and (max-width: 610px) {
@@ -14,6 +15,5 @@
         font-size: 22px;
         line-height: 1.2;
         max-width: 250px;
-        margin: 0;
     }
 }
