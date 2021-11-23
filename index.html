@@ -24,7 +24,7 @@
                     <div class="profile__text">
                         <h1 class="profile__name">Mark Worsham</h1>
                         <button type="button" class="button profile__edit-button"></button>
-                        <p class="profile__title">Web Developer</p>
+                        <p class="profile__description">Web Developer</p>
                     </div>
                     
                 </div>
@@ -45,30 +45,30 @@
 
     </div>
 
-    <div class="popup">
+    <div class="popup popup_type_edit">
         <div class="popup__container">
             <button type="button" class="button popup__close-button"></button>
-            <form action="#" class="popup__form" name="profile">
+            <form action="#" class="popup__form" name="edit">
                 <h3 class="popup__title">Edit Profile</h3>
                 <input type="text" name="name" id="name" class="popup__input popup__input_text_name" placeholder="Name">
-                <input type="text" name="title" id="title" class="popup__input popup__input_text_title"
+                <input type="text" name="description" id="description" class="popup__input popup__input_text_description"
                     placeholder="About Me">
                 <button type="submit" class="button popup__save-button">Save</button>
             </form>
          </div>
     </div>
  
-    <!-- <div class="popup">
+    <div class="popup popup_type_add">
         <div class="popup__container">
             <button type="button" class="button popup__close-button"></button>
-            <form action="#" class="popup__form" name="profile">
-                <h3 class="popup__title">Edit Profile</h3>
-                <input type="text" name="name" id="name" class="popup__input popup__input_text_name" placeholder="Name">
-                <input type="text" name="title" id="title" class="popup__input popup__input_text_title"
-                    placeholder="About Me">
-                <button type="submit" class="button popup__save-button">Save</button>
+            <form action="#" class="popup__form" name="add">
+                <h3 class="popup__title">New Place</h3>
+                <input type="text" name="title" id="title" class="popup__input popup__input_text_title" placeholder="Title">
+                <input type="text" name="image-url" id="image" class="popup__input popup__input_text_image-url"
+                    placeholder="Image Link">
+                <button type="submit" class="button popup__save-button">Create</button>
             </form>
-         </div> -->
+         </div>
  
     <!-- <div class="popup">
         <div class="popup__container">
