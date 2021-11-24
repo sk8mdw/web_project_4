@@ -31,6 +31,8 @@ const editModal = document.querySelector(".popup_type_edit");
 const editForm = editModal.querySelector(".popup__form");
 const addModal = document.querySelector(".popup_type_add");
 const addForm = addModal.querySelector(".popup__form");
+const previewModal = document.querySelector('.popup_type_preview');
+
 
 const placesList = document.querySelector('.places__list');
 const cardTemplate = document.querySelector("#cardTemplate").content.querySelector('.card');
@@ -42,7 +44,7 @@ const name = document.querySelector(".profile__name");
 const description = document.querySelector(".profile__description");
 const addCardButton = document.querySelector('.profile__add-button');
 const addModalCloseBtn = addModal.querySelector(".popup__close-button");
-
+const likeBtn = document.querySelector(".card__like-button");
 
 /* -------------------------------- Form data ------------------------------- */
 const nameInput = editForm.querySelector(".popup__input_text_name");
@@ -56,6 +58,12 @@ function generateCards(card) {
   const cardEl = cardTemplate.cloneNode(true);
   cardEl.querySelector('.card__title').textContent = card.title;
   cardEl.querySelector('.card__image').src = card.image;
+
+  cardEl.querySelector('.card__delete-button').addEventListener('click', () => {cardEl.remove()});
+  
+  const likeButton = cardEl.querySelector('.card__like-button');
+  likeButton.addEventListener('click', () => {likeButton.classList.toggle("liked")});
+
   return cardEl;
 }
 
@@ -87,7 +95,6 @@ function addFormSubmitHandler(evt) {
 
   const cardEl = generateCards(card);
   
-  console.log(titleInput);
   console.log(imageUrlInput);
   console.log(card);
   
@@ -95,16 +102,22 @@ function addFormSubmitHandler(evt) {
   toggleModalWindow(addModal);
 }
 
+
 /* ----------------------------- Event listeners ---------------------------- */
+
 editForm.addEventListener('submit', editFormSubmitHandler);
 profileEditBtn.addEventListener('click', () => {
   prefillEditForm(editModal);
   toggleModalWindow(editModal);
 });
+
 editModalCloseBtn.addEventListener('click', () => toggleModalWindow(editModal));
 addForm.addEventListener('submit', addFormSubmitHandler);
 addCardButton.addEventListener('click', () => toggleModalWindow(addModal));
 addModalCloseBtn.addEventListener('click', () => toggleModalWindow(addModal));
+
+
+
 
 /* --------------------------------- Actions -------------------------------- */
 initialCards.forEach((card) => {

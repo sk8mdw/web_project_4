@@ -5,3 +5,13 @@
     width: 100%;
     border: 0;
 }
+
+.card__like-button:hover {
+    opacity: 0.5;
+  }
+  
+  .card__like-button:active,
+  .liked {
+    background-image: url(../../../images/like_filled_button.svg);
+    opacity: 1;
+  }
