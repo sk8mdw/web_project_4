@@ -1,0 +1,15 @@
+.popup__container_type_preview {
+    position: relative;
+    max-height: 75vh;
+    max-width: 75vw;
+    margin: 90px auto;
+    padding: 0;
+    background-color: transparent;
+}
+
+@media screen and (max-width: 425px) {
+    .popup__container_type_preview {
+        max-width: 80vw;
+        margin: 136px 40px;
+    }
+}
