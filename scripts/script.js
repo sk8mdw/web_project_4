@@ -1,31 +1,3 @@
-/* ------------------------------ Card array ------------------------------ */
-const initialCards = [
-  {
-    title: "Yosemite Valley",
-    image: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    title: "Lake Louise",
-    image: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    title: "Bald Mountains",
-    image: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    title: "Latemar",
-    image: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    title: "Vanoise National Park",
-    image: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    title: "Lago di Braies",
-    image: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-];
-
 /* -------------------------------- Wrappers -------------------------------- */
 const editModal = document.querySelector(".popup_type_edit");
 const editForm = editModal.querySelector(".popup__form");
@@ -82,15 +54,14 @@ function generateCards(card) {
   const cardEl = cardTemplate.cloneNode(true);
   cardEl.querySelector('.card__title').textContent = card.title;
   cardEl.querySelector('.card__image').src = card.image;
-  
+  console.log(card);
+
 
   cardEl.querySelector('.card__delete-button').addEventListener('click', () => {cardEl.remove()});
   
   const likeButton = cardEl.querySelector('.card__like-button');
   likeButton.addEventListener('click', () => {likeButton.classList.toggle("liked")});
   
-  // const cardTitle = card.title;
-  console.log(card);
   cardEl.querySelector('.card__image').addEventListener('click', () => showPreview(card));
 
   return cardEl;
