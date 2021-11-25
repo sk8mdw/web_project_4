@@ -4,9 +4,10 @@
     background-position: center;
     background-repeat: no-repeat;
     border: none;
+    padding: 0;
     height: 40px;
     width: 40px;
-    position: relative;
+    position: absolute;
     float: right;
     top: -40px;
     right: -40px;
