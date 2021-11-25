@@ -47,13 +47,15 @@ function editFormSubmitHandler(evt) {
 function showPreview(card)  {
   previewModalImg.src = card.image;
   previewModalTitle.textContent = card.title;
+  previewModalImg.alt = card.title;
   toggleModalWindow(previewModal);
 }
 
-function generateCards(card) {
+function generateCard(card) {
   const cardEl = cardTemplate.cloneNode(true);
   cardEl.querySelector('.card__title').textContent = card.title;
   cardEl.querySelector('.card__image').src = card.image;
+  cardEl.querySelector('.card__image').alt = card.title;
 
   cardEl.querySelector('.card__delete-button').addEventListener('click', () => {cardEl.remove()});
   
@@ -70,9 +72,10 @@ function addFormSubmitHandler(evt) {
   const card = {
     title: titleInput.value,
     image: imageUrlInput.value,
+    alt: titleInput.value,
   };
 
-  const cardEl = generateCards(card);
+  const cardEl = generateCard(card);
   placesList.prepend(cardEl);
   toggleModalWindow(addModal);
 }
@@ -92,6 +95,6 @@ previewModalCloseBtn.addEventListener('click', () => toggleModalWindow(previewMo
 
 /* --------------------------------- Actions -------------------------------- */
 initialCards.forEach((card) => {
-  cardEl = generateCards(card);
+  cardEl = generateCard(card);
   placesList.append(cardEl);
 });
