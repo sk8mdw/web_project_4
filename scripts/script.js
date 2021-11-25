@@ -54,8 +54,6 @@ function generateCards(card) {
   const cardEl = cardTemplate.cloneNode(true);
   cardEl.querySelector('.card__title').textContent = card.title;
   cardEl.querySelector('.card__image').src = card.image;
-  console.log(card);
-
 
   cardEl.querySelector('.card__delete-button').addEventListener('click', () => {cardEl.remove()});
   
