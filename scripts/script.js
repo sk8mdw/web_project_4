@@ -8,13 +8,13 @@ const placesList = document.querySelector('.places__list');
 const cardTemplate = document.querySelector("#cardTemplate").content.querySelector('.card');
 
 /* -------------------------- Buttons and DOM nodes ------------------------- */
-const profileEditBtn = document.querySelector(".profile__edit-button");
-const editModalCloseBtn = editModal.querySelector(".popup__close-button");
+const profileEditButton = document.querySelector(".profile__edit-button");
+const editModalCloseButton = editModal.querySelector(".popup__close-button");
 const name = document.querySelector(".profile__name");
 const description = document.querySelector(".profile__description");
 const addCardButton = document.querySelector('.profile__add-button');
-const addModalCloseBtn = addModal.querySelector(".popup__close-button");
-const previewModalCloseBtn = previewModal.querySelector(".popup__close-button");
+const addModalCloseButton = addModal.querySelector(".popup__close-button");
+const previewModalCloseButton = previewModal.querySelector(".popup__close-button");
 const previewModalImg = previewModal.querySelector('.popup__image');
 const previewModalTitle = previewModal.querySelector('.popup__caption');
 
@@ -27,17 +27,15 @@ const imageUrlInput = addForm.querySelector('.popup__input_text_image-url');
 
 /* -------------------------------- Functions ------------------------------- */
 function prefillEditForm(modalWindow) {
-  if (!modalWindow.classList.contains('popup_opened')) {
     nameInput.value = name.textContent;
     descriptionInput.value = description.textContent;
-  }
 }
 
 function toggleModalWindow(modalWindow) {
   modalWindow.classList.toggle('popup_opened');
 }
 
-function editFormSubmitHandler(evt) {
+function handleEditFormSubmit(evt) {
   evt.preventDefault();
   name.textContent = nameInput.value;
   description.textContent = descriptionInput.value;
@@ -67,7 +65,7 @@ function generateCard(card) {
   return cardEl;
 }
 
-function addFormSubmitHandler(evt) {
+function handleAddFormSubmit(evt) {
   evt.preventDefault();
   const card = {
     title: titleInput.value,
@@ -81,17 +79,17 @@ function addFormSubmitHandler(evt) {
 }
 
 /* ----------------------------- Event listeners ---------------------------- */
-editForm.addEventListener('submit', editFormSubmitHandler);
-profileEditBtn.addEventListener('click', () => {
+editForm.addEventListener('submit', handleEditFormSubmit);
+profileEditButton.addEventListener('click', () => {
   prefillEditForm(editModal);
   toggleModalWindow(editModal);
 });
 
-editModalCloseBtn.addEventListener('click', () => toggleModalWindow(editModal));
-addForm.addEventListener('submit', addFormSubmitHandler);
+editModalCloseButton.addEventListener('click', () => toggleModalWindow(editModal));
+addForm.addEventListener('submit', handleAddFormSubmit);
 addCardButton.addEventListener('click', () => toggleModalWindow(addModal));
-addModalCloseBtn.addEventListener('click', () => toggleModalWindow(addModal));
-previewModalCloseBtn.addEventListener('click', () => toggleModalWindow(previewModal));
+addModalCloseButton.addEventListener('click', () => toggleModalWindow(addModal));
+previewModalCloseButton.addEventListener('click', () => toggleModalWindow(previewModal));
 
 /* --------------------------------- Actions -------------------------------- */
 initialCards.forEach((card) => {
