@@ -33,6 +33,7 @@ function prefillEditForm(modalWindow) {
 
 function toggleModalWindow(modalWindow) {
   modalWindow.classList.toggle('popup_opened');
+  resetForm();
 }
 
 function handleEditFormSubmit(evt) {

@@ -48,16 +48,16 @@
     <div class="popup popup_type_edit">
         <div class="popup__container">
             <button type="button" class="button popup__close-button"></button>
-            <form action="#" class="popup__form" name="edit" novalidate>
-                <h3 class="popup__title">Edit Profile</h3>
-                <input type="text" name="name" id="name" class="popup__input popup__input_text_name" placeholder="Name"
+            <h3 class="popup__title">Edit Profile</h3>
+            <form action class="popup__form" name="edit" novalidate>
+                <input type="text" name="name" id="owner-name" class="popup__input popup__input_text_name" placeholder="Name"
                     minlength="2" maxlength="40" required>
-                <span class="popup__error" id="name-input-error"></span>
-                <input type="text" name="description" id="description"
+                <span class="popup__error" id="owner-name-error"></span>
+                <input type="text" name="description" id="owner-description"
                     class="popup__input popup__input_text_description" placeholder="About Me" minlength="2"
                     maxlength="200" required>
-                <span class="popup__error" id="description-error"></span>
-                <button type="submit" class="button popup__save-button">Save</button>
+                <span class="popup__error" id="owner-description-error"></span>
+                <button type="submit" class="button popup__save-button popup__save-button_type_disabled">Save</button>
             </form>
         </div>
     </div>
@@ -65,15 +65,15 @@
     <div class="popup popup_type_add">
         <div class="popup__container">
             <button type="button" class="button popup__close-button"></button>
-            <form action="#" class="popup__form" name="add" novalidate>
-                <h3 class="popup__title">New Place</h3>
-                <input type="text" name="title" id="title" class="popup__input popup__input_text_title"
+            <h3 class="popup__title">New Place</h3>
+            <form action class="popup__form" name="add" novalidate>
+                <input type="text" name="title" id="place-name" class="popup__input popup__input_text_title"
                     placeholder="Title" minlength="1" maxlength="30" required>
-                <span class="popup__error" id="title-input-error"></span>
-                <input type="url" name="image-url" id="image" class="popup__input popup__input_text_image-url"
-                    placeholder="Image Link">
-                <span class="popup__error" id="link-input-error"></span>
-                <button type="submit" class="button popup__save-button">Create</button>
+                <span class="popup__error" id="place-name-error"></span>
+                <input type="url" name="image-url" id="place-link" class="popup__input popup__input_text_image-url"
+                    placeholder="Image Link" required>
+                <span class="popup__error" id="place-link-error"></span>
+                <button type="submit" class="button popup__save-button popup__save-button_type_disabled">Create</button>
             </form>
         </div>
     </div>
@@ -97,8 +97,8 @@
         </li>
     </template>
     <script src="./scripts/data.js"></script>
-    <script src="scripts/validate.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="scripts/validate.js"></script>
 
 </body>
 
