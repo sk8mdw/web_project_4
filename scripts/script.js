@@ -27,8 +27,8 @@ const imageUrlInput = addForm.querySelector('.popup__input_text_image-url');
 
 /* -------------------------------- Functions ------------------------------- */
 function prefillEditForm(modalWindow) {
-    nameInput.value = name.textContent;
-    descriptionInput.value = description.textContent;
+  nameInput.value = name.textContent;
+  descriptionInput.value = description.textContent;
 }
 
 function toggleModalWindow(modalWindow) {
@@ -43,7 +43,7 @@ function handleEditFormSubmit(evt) {
   toggleModalWindow(editModal);
 }
 
-function showPreview(card)  {
+function showPreview(card) {
   previewModalImg.src = card.image;
   previewModalTitle.textContent = card.title;
   previewModalImg.alt = card.title;
@@ -56,11 +56,11 @@ function generateCard(card) {
   cardEl.querySelector('.card__image').src = card.image;
   cardEl.querySelector('.card__image').alt = card.title;
 
-  cardEl.querySelector('.card__delete-button').addEventListener('click', () => {cardEl.remove()});
-  
+  cardEl.querySelector('.card__delete-button').addEventListener('click', () => { cardEl.remove() });
+
   const likeButton = cardEl.querySelector('.card__like-button');
-  likeButton.addEventListener('click', () => {likeButton.classList.toggle("liked")});
-  
+  likeButton.addEventListener('click', () => { likeButton.classList.toggle("liked") });
+
   cardEl.querySelector('.card__image').addEventListener('click', () => showPreview(card));
 
   return cardEl;
@@ -91,6 +91,27 @@ addForm.addEventListener('submit', handleAddFormSubmit);
 addCardButton.addEventListener('click', () => toggleModalWindow(addModal));
 addModalCloseButton.addEventListener('click', () => toggleModalWindow(addModal));
 previewModalCloseButton.addEventListener('click', () => toggleModalWindow(previewModal));
+
+editModal.addEventListener('click', (e) => {
+  if (e.target === editModal) {
+    toggleModalWindow(editModal);
+  }
+});
+
+addModal.addEventListener('click', (e) => {
+  if (e.target === addModal) {
+    toggleModalWindow(addModal);
+  }
+});
+
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === "Escape") {
+    document.removeEventListener('keydown', (evt));
+    const currentModal = document.querySelector(".popup_opened");
+    toggleModalWindow(currentModal);
+  }
+});
 
 /* --------------------------------- Actions -------------------------------- */
 initialCards.forEach((card) => {

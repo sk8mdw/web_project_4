@@ -40,8 +40,9 @@ const setupEventListeners = (formEl, {inputSelector, submitButtonSelector, ... o
 };
 
 const resetForm = () => {
-    //do stuff to reset the form
-    console.log("reset form here");
+    // prefillEditForm(modalWindow);
+	console.log(nameInput.value);
+    
 };
 
 const enableValidation = ({formSelector, ... otherSettings}) => {
