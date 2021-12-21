@@ -17,6 +17,7 @@ const addModalCloseButton = addModal.querySelector(".popup__close-button");
 const previewModalCloseButton = previewModal.querySelector(".popup__close-button");
 const previewModalImg = previewModal.querySelector('.popup__image');
 const previewModalTitle = previewModal.querySelector('.popup__caption');
+const saveButton = document.querySelector('#editSaveButton');
 
 
 /* -------------------------------- Form data ------------------------------- */
@@ -31,23 +32,41 @@ function prefillEditForm(modalWindow) {
   descriptionInput.value = description.textContent;
 }
 
-function toggleModalWindow(modalWindow) {
-  modalWindow.classList.toggle('popup_opened');
-  resetForm();
+// adding open and close modalWindow functions, escape key function
+function openModalWindow(modalWindow) {
+  modalWindow.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
 }
+
+function closeModalWindow(modalWindow) {
+  modalWindow.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
+}
+
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    closeModalWindow(document.querySelector('.popup_opened'));
+  }
+}
+
+function disableSaveButton() {
+  saveButton.classList.add('popup__save-button_type_disabled');
+  saveButton.disabled = true;
+}
+// 
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   name.textContent = nameInput.value;
   description.textContent = descriptionInput.value;
-  toggleModalWindow(editModal);
+  closeModalWindow(editModal);
 }
 
 function showPreview(card) {
   previewModalImg.src = card.image;
   previewModalTitle.textContent = card.title;
   previewModalImg.alt = card.title;
-  toggleModalWindow(previewModal);
+  openModalWindow(previewModal);
 }
 
 function generateCard(card) {
@@ -76,45 +95,44 @@ function handleAddFormSubmit(evt) {
 
   const cardEl = generateCard(card);
   placesList.prepend(cardEl);
-  toggleModalWindow(addModal);
+  disableSaveButton();
+  closeModalWindow(addModal);
+  addForm.reset();
 }
 
 /* ----------------------------- Event listeners ---------------------------- */
 editForm.addEventListener('submit', handleEditFormSubmit);
 profileEditButton.addEventListener('click', () => {
   prefillEditForm(editModal);
-  toggleModalWindow(editModal);
+  openModalWindow(editModal);
 });
 
-editModalCloseButton.addEventListener('click', () => toggleModalWindow(editModal));
+editModalCloseButton.addEventListener('click', () => closeModalWindow(editModal));
 addForm.addEventListener('submit', handleAddFormSubmit);
-addCardButton.addEventListener('click', () => toggleModalWindow(addModal));
-addModalCloseButton.addEventListener('click', () => toggleModalWindow(addModal));
-previewModalCloseButton.addEventListener('click', () => toggleModalWindow(previewModal));
+addCardButton.addEventListener('click', () => openModalWindow(addModal));
+addModalCloseButton.addEventListener('click', () => closeModalWindow(addModal));
+previewModalCloseButton.addEventListener('click', () => closeModalWindow(previewModal));
 
 editModal.addEventListener('click', (e) => {
   if (e.target === editModal) {
-    toggleModalWindow(editModal);
+    closeModalWindow(editModal);
   }
 });
 
 addModal.addEventListener('click', (e) => {
   if (e.target === addModal) {
-    toggleModalWindow(addModal);
+    closeModalWindow(addModal);
   }
 });
 
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === "Escape") {
-    document.removeEventListener('keydown', (evt));
-    const currentModal = document.querySelector(".popup_opened");
-    toggleModalWindow(currentModal);
+previewModal.addEventListener('click', (e) => {
+  if (e.target === previewModal) {
+    closeModalWindow(previewModal);
   }
 });
 
 /* --------------------------------- Actions -------------------------------- */
 initialCards.forEach((card) => {
-  cardEl = generateCard(card);
+  const cardEl = generateCard(card);
   placesList.append(cardEl);
 });
