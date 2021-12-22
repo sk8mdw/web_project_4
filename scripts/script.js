@@ -71,16 +71,17 @@ function showPreview(card) {
 
 function generateCard(card) {
   const cardEl = cardTemplate.cloneNode(true);
+  const cardImage = cardEl.querySelector('.card__image');
   cardEl.querySelector('.card__title').textContent = card.title;
-  cardEl.querySelector('.card__image').src = card.image;
-  cardEl.querySelector('.card__image').alt = card.title;
+  cardImage.src = card.image;
+  cardImage.alt = card.title;
 
   cardEl.querySelector('.card__delete-button').addEventListener('click', () => { cardEl.remove() });
 
   const likeButton = cardEl.querySelector('.card__like-button');
   likeButton.addEventListener('click', () => { likeButton.classList.toggle("liked") });
 
-  cardEl.querySelector('.card__image').addEventListener('click', () => showPreview(card));
+  cardImage.addEventListener('click', () => showPreview(card));
 
   return cardEl;
 }
