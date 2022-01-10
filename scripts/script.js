@@ -1,6 +1,6 @@
 import FormValidator from "./FormValidator.js";
-
-console.log(FormValidator);
+import Card from "./card.js";
+import { openModalWindow, closeModalWindow } from "./utils.js";
 
 /* -------------------------------- Wrappers -------------------------------- */
 const editModal = document.querySelector(".popup_type_edit");
@@ -36,22 +36,6 @@ function prefillEditForm(modalWindow) {
   descriptionInput.value = description.textContent;
 }
 
-// adding open and close modalWindow functions, escape key function
-function openModalWindow(modalWindow) {
-  modalWindow.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEscape);
-}
-
-function closeModalWindow(modalWindow) {
-  modalWindow.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEscape);
-}
-
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    closeModalWindow(document.querySelector('.popup_opened'));
-  }
-}
 
 function disableSaveButton() {
   saveButton.classList.add('popup__save-button_type_disabled');
@@ -72,6 +56,7 @@ function showPreview(card) {
   previewModalImg.alt = card.title;
   openModalWindow(previewModal);
 }
+
 
 function generateCard(card) {
   const cardEl = cardTemplate.cloneNode(true);
