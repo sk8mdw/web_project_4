@@ -14,17 +14,7 @@ const checkInputValidity = (formEl, inputEl, settings) => {
 	}
 };
 
-toggleButtonState = (inputList, buttonEl, {inactiveButtonClass}) => {
- 
-	const allValid = inputList.every(inputEl => isValid(inputEl));
-	if (allValid) {
-		buttonEl.classList.remove(inactiveButtonClass);
-		buttonEl.disabled = false;
-	} else {
-		buttonEl.classList.add(inactiveButtonClass);
-		buttonEl.disabled = true;
-	}
-};
+
 
 const setupEventListeners = (formEl, {inputSelector, submitButtonSelector, ... otherSettings}) => {
 	const inputList = [... formEl.querySelectorAll(inputSelector)];

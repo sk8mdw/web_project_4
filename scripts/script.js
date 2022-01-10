@@ -132,7 +132,7 @@ initialCards.forEach((card) => {
 const editFormEl = editModal.querySelector('.popup__form');
 const addFormEl = addModal.querySelector('.popup__form');
 
-const formValidationConfig = {
+const formValidationSettings = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_type_disabled",
@@ -140,8 +140,8 @@ const formValidationConfig = {
   errorClass: "popup__error_visible",
 };
 
-const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
+const editFormValidator = new FormValidator(formValidationSettings, editFormEl);
 editFormValidator.enableValidation();
 
-const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
+const addFormValidator = new FormValidator(formValidationSettings, addFormEl);
 addFormValidator.enableValidation();

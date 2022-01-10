@@ -6,7 +6,11 @@ class Card {
       this._cardSelector = cardSelector;
     }
 
-    _getTemplate() {}
+    _getTemplate() {
+        return document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
+    }
+
+    getView() {}
 
     _setupEventListeners() {}
 
