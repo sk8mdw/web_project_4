@@ -1,3 +1,7 @@
+import FormValidator from "./FormValidator.js";
+
+console.log(FormValidator);
+
 /* -------------------------------- Wrappers -------------------------------- */
 const editModal = document.querySelector(".popup_type_edit");
 const editForm = editModal.querySelector(".popup__form");
@@ -137,3 +141,22 @@ initialCards.forEach((card) => {
   const cardEl = generateCard(card);
   placesList.append(cardEl);
 });
+
+/* ------------------------------- Validation ------------------------------- */
+
+const editFormEl = editModal.querySelector('.popup__form');
+const addFormEl = addModal.querySelector('.popup__form');
+
+const formValidationConfig = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_type_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const editFormValidator = new FormValidator(formValidationConfig, editFormEl);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(formValidationConfig, addFormEl);
+addFormValidator.enableValidation();
