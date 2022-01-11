@@ -7,9 +7,7 @@ const editModal = document.querySelector(".popup_type_edit");
 const editForm = editModal.querySelector(".popup__form");
 const addModal = document.querySelector(".popup_type_add");
 const addForm = addModal.querySelector(".popup__form");
-const previewModal = document.querySelector('.popup_type_preview');
 const placesList = document.querySelector('.places__list');
-const cardTemplate = document.querySelector("#cardTemplate").content.querySelector('.card');
 
 /* -------------------------- Buttons and DOM nodes ------------------------- */
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -18,9 +16,8 @@ const name = document.querySelector(".profile__name");
 const description = document.querySelector(".profile__description");
 const addCardButton = document.querySelector('.profile__add-button');
 const addModalCloseButton = addModal.querySelector(".popup__close-button");
+const previewModal = document.querySelector('.popup_type_preview');
 const previewModalCloseButton = previewModal.querySelector(".popup__close-button");
-const previewModalImg = previewModal.querySelector('.popup__image');
-const previewModalTitle = previewModal.querySelector('.popup__caption');
 const saveButton = document.querySelector('#editSaveButton');
 
 
@@ -59,68 +56,40 @@ function handleAddFormSubmit(evt) {
     image: imageUrlInput.value,
     alt: titleInput.value,
   };
-}
 
-function showPreview(card) {
-  previewModalImg.src = card.image;
-  previewModalTitle.textContent = card.title;
-  previewModalImg.alt = card.title;
-  openModalWindow(previewModal);
+  renderCard(card);
+  closeModalWindow(addModal);
+  addForm.reset();
+  disableSaveButton();
 }
 
 function renderCard(card) {
   const cardElement = new Card(card, cardSelector);
-  addCard(cardElement, placesList);
+  addCard(cardElement, placesList)
   return cardElement;
 }
 
-function addCard(card, container) {
-  container.prepend(card.getView());
+function addCard(card, placesList) {
+  placesList.prepend(card.getView());
 }
 
 
-// function generateCard(card) {
-//   const cardEl = cardTemplate.cloneNode(true);
-//   const cardImage = cardEl.querySelector('.card__image');
-//   cardEl.querySelector('.card__title').textContent = card.title;
-//   cardImage.src = card.image;
-//   cardImage.alt = card.title;
-
-//   cardEl.querySelector('.card__delete-button').addEventListener('click', () => { cardEl.remove() });
-
-//   const likeButton = cardEl.querySelector('.card__like-button');
-//   likeButton.addEventListener('click', () => { likeButton.classList.toggle("liked") });
-
-//   cardImage.addEventListener('click', () => showPreview(card));
-
-//   return cardEl;
-// }
-
-
-
-//   const cardEl = generateCard(card);
-//   placesList.prepend(cardEl);
-//   disableSaveButton();
-//   closeModalWindow(addModal);
-//   addForm.reset();
-// }
-
-// const renderCard = (card, wrap) => {
-  // const card = new Card(data, cardSelector);
-//   wrap.prepend(card.getView));
-// };
-
 /* ----------------------------- Event listeners ---------------------------- */
 editForm.addEventListener('submit', handleEditFormSubmit);
+
 profileEditButton.addEventListener('click', () => {
   prefillEditForm(editModal);
   openModalWindow(editModal);
 });
 
 editModalCloseButton.addEventListener('click', () => closeModalWindow(editModal));
+
 addForm.addEventListener('submit', handleAddFormSubmit);
+
 addCardButton.addEventListener('click', () => openModalWindow(addModal));
+
 addModalCloseButton.addEventListener('click', () => closeModalWindow(addModal));
+
 previewModalCloseButton.addEventListener('click', () => closeModalWindow(previewModal));
 
 editModal.addEventListener('click', (e) => {
@@ -140,12 +109,6 @@ previewModal.addEventListener('click', (e) => {
     closeModalWindow(previewModal);
   }
 });
-
-/* --------------------------------- Actions -------------------------------- */
-// initialCards.forEach((card) => {
-//   const cardEl = generateCard(card);
-//   placesList.append(cardEl);
-// });
 
 initialCards.forEach((card) => {
   renderCard(card);
