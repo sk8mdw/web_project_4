@@ -30,6 +30,8 @@ const descriptionInput = editForm.querySelector(".popup__input_text_description"
 const titleInput = addForm.querySelector('.popup__input_text_title');
 const imageUrlInput = addForm.querySelector('.popup__input_text_image-url');
 
+const cardSelector = document.querySelector("#cardTemplate");
+
 /* -------------------------------- Functions ------------------------------- */
 function prefillEditForm(modalWindow) {
   nameInput.value = name.textContent;
@@ -50,31 +52,6 @@ function handleEditFormSubmit(evt) {
   closeModalWindow(editModal);
 }
 
-function showPreview(card) {
-  previewModalImg.src = card.image;
-  previewModalTitle.textContent = card.title;
-  previewModalImg.alt = card.title;
-  openModalWindow(previewModal);
-}
-
-
-function generateCard(card) {
-  const cardEl = cardTemplate.cloneNode(true);
-  const cardImage = cardEl.querySelector('.card__image');
-  cardEl.querySelector('.card__title').textContent = card.title;
-  cardImage.src = card.image;
-  cardImage.alt = card.title;
-
-  cardEl.querySelector('.card__delete-button').addEventListener('click', () => { cardEl.remove() });
-
-  const likeButton = cardEl.querySelector('.card__like-button');
-  likeButton.addEventListener('click', () => { likeButton.classList.toggle("liked") });
-
-  cardImage.addEventListener('click', () => showPreview(card));
-
-  return cardEl;
-}
-
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
   const card = {
@@ -82,13 +59,56 @@ function handleAddFormSubmit(evt) {
     image: imageUrlInput.value,
     alt: titleInput.value,
   };
-
-  const cardEl = generateCard(card);
-  placesList.prepend(cardEl);
-  disableSaveButton();
-  closeModalWindow(addModal);
-  addForm.reset();
 }
+
+function showPreview(card) {
+  previewModalImg.src = card.image;
+  previewModalTitle.textContent = card.title;
+  previewModalImg.alt = card.title;
+  openModalWindow(previewModal);
+}
+
+function renderCard(card) {
+  const cardElement = new Card(card, cardSelector);
+  addCard(cardElement, placesList);
+  return cardElement;
+}
+
+function addCard(card, container) {
+  container.prepend(card.getView());
+}
+
+
+// function generateCard(card) {
+//   const cardEl = cardTemplate.cloneNode(true);
+//   const cardImage = cardEl.querySelector('.card__image');
+//   cardEl.querySelector('.card__title').textContent = card.title;
+//   cardImage.src = card.image;
+//   cardImage.alt = card.title;
+
+//   cardEl.querySelector('.card__delete-button').addEventListener('click', () => { cardEl.remove() });
+
+//   const likeButton = cardEl.querySelector('.card__like-button');
+//   likeButton.addEventListener('click', () => { likeButton.classList.toggle("liked") });
+
+//   cardImage.addEventListener('click', () => showPreview(card));
+
+//   return cardEl;
+// }
+
+
+
+//   const cardEl = generateCard(card);
+//   placesList.prepend(cardEl);
+//   disableSaveButton();
+//   closeModalWindow(addModal);
+//   addForm.reset();
+// }
+
+// const renderCard = (card, wrap) => {
+  // const card = new Card(data, cardSelector);
+//   wrap.prepend(card.getView));
+// };
 
 /* ----------------------------- Event listeners ---------------------------- */
 editForm.addEventListener('submit', handleEditFormSubmit);
@@ -122,9 +142,13 @@ previewModal.addEventListener('click', (e) => {
 });
 
 /* --------------------------------- Actions -------------------------------- */
+// initialCards.forEach((card) => {
+//   const cardEl = generateCard(card);
+//   placesList.append(cardEl);
+// });
+
 initialCards.forEach((card) => {
-  const cardEl = generateCard(card);
-  placesList.append(cardEl);
+  renderCard(card);
 });
 
 /* ------------------------------- Validation ------------------------------- */
