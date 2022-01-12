@@ -26,15 +26,10 @@ class Card {
         this._deleteButton = this._element.querySelector(".card__delete-button");
         this._imageElement = this._element.querySelector(".card__image");
         this._imageElement.src = this._image;
-
-        /* -------------------------------------------------------------------------- */
-        /*         I am still working on getting the alt attribute to populate        */
-        /* -------------------------------------------------------------------------- */
-        this._imageElement.alt - this._title;
+        this._imageElement.alt = `Photo of ${this._title}`;
 
         this._setupEventListeners();
-        // console.log(this._imageElement.alt);
-
+        
         return this._element;
     }
 
@@ -50,12 +45,13 @@ class Card {
 
     _handleDeleteButton() {
         this._element.remove();
+        this._element = null;
     }
 
     _handlePreviewPicture() {
         previewModalImg.src = this._image;
         previewModalTitle.textContent = this._title;
-        previewModalImg.alt = this._title;
+        previewModalImg.alt = `Photo of ${this._title}`;
         openModalWindow(previewModal);
     }
 }

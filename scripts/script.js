@@ -35,18 +35,12 @@ function prefillEditForm(modalWindow) {
   descriptionInput.value = description.textContent;
 }
 
-
-function disableSaveButton() {
-  saveButton.classList.add('popup__save-button_type_disabled');
-  saveButton.disabled = true;
-}
-// 
-
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   name.textContent = nameInput.value;
   description.textContent = descriptionInput.value;
   closeModalWindow(editModal);
+  editFormValidator.disableSaveButton();
 }
 
 function handleAddFormSubmit(evt) {
@@ -54,13 +48,12 @@ function handleAddFormSubmit(evt) {
   const card = {
     title: titleInput.value,
     image: imageUrlInput.value,
-    alt: titleInput.value,
   };
 
   renderCard(card);
   closeModalWindow(addModal);
   addForm.reset();
-  disableSaveButton();
+  addFormValidator.disableSaveButton();
 }
 
 function renderCard(card) {
@@ -92,24 +85,6 @@ addModalCloseButton.addEventListener('click', () => closeModalWindow(addModal));
 
 previewModalCloseButton.addEventListener('click', () => closeModalWindow(previewModal));
 
-editModal.addEventListener('click', (e) => {
-  if (e.target === editModal) {
-    closeModalWindow(editModal);
-  }
-});
-
-addModal.addEventListener('click', (e) => {
-  if (e.target === addModal) {
-    closeModalWindow(addModal);
-  }
-});
-
-previewModal.addEventListener('click', (e) => {
-  if (e.target === previewModal) {
-    closeModalWindow(previewModal);
-  }
-});
-
 initialCards.forEach((card) => {
   renderCard(card);
 });
@@ -131,4 +106,4 @@ const editFormValidator = new FormValidator(formValidationSettings, editFormEl);
 editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(formValidationSettings, addFormEl);
-addFormValidator.enableValidation();
+addFormValidator.enableValidation(); 

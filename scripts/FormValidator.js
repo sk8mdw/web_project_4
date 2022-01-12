@@ -54,6 +54,11 @@ class FormValidator {
         });
     }
 
+    disableSaveButton() {
+        this._buttonEl.classList.add('popup__save-button_type_disabled');
+        this._buttonEl.disabled = true;
+    };
+
     enableValidation() {
         this._formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();
@@ -61,6 +66,9 @@ class FormValidator {
 
         this._setupEventListeners();
     }
+    
 }
+
+
 
 export default FormValidator;
