@@ -18,7 +18,6 @@ const addCardButton = document.querySelector('.profile__add-button');
 const addModalCloseButton = addModal.querySelector(".popup__close-button");
 const previewModal = document.querySelector('.popup_type_preview');
 const previewModalCloseButton = previewModal.querySelector(".popup__close-button");
-const saveButton = document.querySelector('#editSaveButton');
 
 
 /* -------------------------------- Form data ------------------------------- */
@@ -40,7 +39,7 @@ function handleEditFormSubmit(evt) {
   name.textContent = nameInput.value;
   description.textContent = descriptionInput.value;
   closeModalWindow(editModal);
-  editFormValidator.disableSaveButton();
+  editFormValidator.toggleButtonState();
 }
 
 function handleAddFormSubmit(evt) {
@@ -53,7 +52,7 @@ function handleAddFormSubmit(evt) {
   renderCard(card);
   closeModalWindow(addModal);
   addForm.reset();
-  addFormValidator.disableSaveButton();
+  addFormValidator.toggleButtonState();
 }
 
 function renderCard(card) {

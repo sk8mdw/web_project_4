@@ -32,7 +32,7 @@ class FormValidator {
         }
     }
 
-    _toggleButtonState() {
+    toggleButtonState() {
         const allValid = this._inputList.every((inputEl) => inputEl.validity.valid);
         if (allValid) {
             this._buttonEl.classList.remove(this._inactiveButtonClass);
@@ -44,20 +44,15 @@ class FormValidator {
     }
 
     _setupEventListeners() {
-        this._toggleButtonState();
+        this.toggleButtonState();
         this._inputList.forEach((inputEl) => {
             inputEl.addEventListener("input", (e) => {
 
                 this._checkInputValidity(inputEl);
-                this._toggleButtonState();
+                this.toggleButtonState();
             });
         });
     }
-
-    disableSaveButton() {
-        this._buttonEl.classList.add('popup__save-button_type_disabled');
-        this._buttonEl.disabled = true;
-    };
 
     enableValidation() {
         this._formElement.addEventListener("submit", (evt) => {
