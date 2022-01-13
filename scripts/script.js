@@ -1,5 +1,5 @@
 import FormValidator from "./FormValidator.js";
-import Card from "./card.js";
+import Card from "./Card.js";
 import { openModalWindow, closeModalWindow } from "./utils.js";
 
 /* ------------------------------ Card array ------------------------------ */
