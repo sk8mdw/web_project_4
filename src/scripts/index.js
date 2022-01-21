@@ -1,3 +1,4 @@
+import "../pages/index.css"
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/card.js";
 import { openModalWindow, closeModalWindow } from "./utils.js";
