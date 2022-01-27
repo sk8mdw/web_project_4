@@ -1,21 +1,21 @@
-import { openModalWindow } from "../scripts/utils.js";
+// import { openModalWindow } from "../scripts/utils.js";
 
-const previewModal = document.querySelector('.popup_type_preview');
-const previewModalImg = previewModal.querySelector('.popup__image');
-const previewModalTitle = previewModal.querySelector('.popup__caption');
+// const previewModal = document.querySelector('.popup_type_preview');
+// const previewModalImg = previewModal.querySelector('.popup__image');
+// const previewModalTitle = previewModal.querySelector('.popup__caption');
 
 
 class Card {
     constructor(data, cardSelector) {
         this._title = data.title;
         this._image = data.image;
-
         this._cardSelector = cardSelector;
     }
 
     _getTemplate() {
-        const cardElement = this._cardSelector.content.querySelector(".card").cloneNode(true);
+        const cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
         return cardElement;
+        console.log(cardElement);
     }
 
     getView() {
@@ -55,7 +55,5 @@ class Card {
         openModalWindow(previewModal);
     }
 }
-
-
 
 export default Card;
