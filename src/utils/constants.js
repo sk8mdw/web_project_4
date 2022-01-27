@@ -63,4 +63,13 @@ export const formValidationSettings = {
   export const selectors = {
       cardSection: '.places__list',
       cardTemplate: '#cardTemplate',
+      previewModal: '.popup_type_preview',
   };
+
+  export const popupEditUser = {
+
+  }
+
+  export const popupAddCard = {
+
+  }

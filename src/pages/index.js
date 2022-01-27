@@ -62,11 +62,24 @@ import { openModalWindow, closeModalWindow } from "../scripts/utils.js";
 //     }
 //   })
 
-console.log(selectors.cardTemplate);
+// console.log(selectors.cardTemplate);
+const cardPreviewPopup = new PopupWithImage(selectors.previewModal);
+cardPreviewPopup.setEventListeners();
+
+
+const createCard = (card) =>
+new Card({
+  data:card, handleCardClick: (imageData) => {
+  cardPreviewPopup.open(imageData);
+  console.log(imageData);
+  },
+},
+selectors.cardTemplate,
+);
 
 const cardSection = new Section({
  renderer: (item) => {
-   const cardElement = new Card(item, selectors.cardTemplate);
+   const cardElement = createCard(item);
    cardSection.addItem(cardElement.getView());
  },
 },

@@ -1,4 +1,4 @@
-// import { openModalWindow } from "../scripts/utils.js";
+import { openModalWindow } from "../scripts/utils.js";
 
 // const previewModal = document.querySelector('.popup_type_preview');
 // const previewModalImg = previewModal.querySelector('.popup__image');
@@ -6,16 +6,16 @@
 
 
 class Card {
-    constructor(data, cardSelector) {
+    constructor({ data, handleCardClick }, cardSelector) {
         this._title = data.title;
         this._image = data.image;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
         return cardElement;
-        console.log(cardElement);
     }
 
     getView() {
@@ -34,13 +34,13 @@ class Card {
     }
 
     _setupEventListeners() {
-        this._element.querySelector(".card__like-button").addEventListener('click', () => this._handleLikeButton());
-        this._element.querySelector(".card__delete-button").addEventListener('click', () => this._handleDeleteButton());
-        this._imageElement.addEventListener('click', () => this._handlePreviewPicture());
+        this._likeButton.addEventListener('click', () => this._handleLikeButton());
+        this._deleteButton.addEventListener('click', () => this._handleDeleteButton());
+        this._imageElement.addEventListener('click', () => this._handleCardClick({ title: this._title, image: this._image}));
     }
 
     _handleLikeButton() {
-        this._element.querySelector(".card__like-button").classList.toggle("liked");
+        this._likeButton.classList.toggle("liked");
     }
 
     _handleDeleteButton() {
@@ -48,12 +48,12 @@ class Card {
         this._element = null;
     }
 
-    _handlePreviewPicture() {
-        previewModalImg.src = this._image;
-        previewModalTitle.textContent = this._title;
-        previewModalImg.alt = `Photo of ${this._title}`;
-        openModalWindow(previewModal);
-    }
+    // _handlePreviewPicture() {
+    //     previewModalImg.src = this._image;
+    //     previewModalTitle.textContent = this._title;
+    //     previewModalImg.alt = `Photo of ${this._title}`;
+    //     openModalWindow(previewModal);
+    // }
 }
 
 export default Card;
