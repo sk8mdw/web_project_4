@@ -1,10 +1,3 @@
-import { openModalWindow } from "../scripts/utils.js";
-
-// const previewModal = document.querySelector('.popup_type_preview');
-// const previewModalImg = previewModal.querySelector('.popup__image');
-// const previewModalTitle = previewModal.querySelector('.popup__caption');
-
-
 class Card {
     constructor({ data, handleCardClick }, cardSelector) {
         this._title = data.title;
@@ -24,7 +17,6 @@ class Card {
         this._element.querySelector(".card__title").textContent = this._title;
         this._likeButton = this._element.querySelector(".card__like-button");
         this._deleteButton = this._element.querySelector(".card__delete-button");
-        this._imageElement = this._element.querySelector(".card__image");
         this._imageElement.src = this._image;
         this._imageElement.alt = `Photo of ${this._title}`;
 
@@ -48,12 +40,6 @@ class Card {
         this._element = null;
     }
 
-    // _handlePreviewPicture() {
-    //     previewModalImg.src = this._image;
-    //     previewModalTitle.textContent = this._title;
-    //     previewModalImg.alt = `Photo of ${this._title}`;
-    //     openModalWindow(previewModal);
-    // }
 }
 
 export default Card;

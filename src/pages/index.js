@@ -62,9 +62,10 @@ const addForm = new PopupWithForm(
     evt.preventDefault();
 
     const inputValue = addForm.getInputValues();
+
     const cardElement = createCard({
-      name: inputValue.title,
-      link: inputValue.image,
+      title: inputValue.title,
+      image: inputValue.imageurl,
     });
     cardSection.addItem(cardElement.getView());
 
@@ -94,7 +95,6 @@ popupEditUser.editButton.addEventListener("click", () => {
 // editProfileCloseButton.addEventListener("click", () => editPopup.close());
 
 popupAddCard.addButton.addEventListener("click", () => {
-  // addFormValidator.resetForm();
   addForm.open();
 });
 
@@ -108,72 +108,3 @@ editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(formValidationSettings, addFormEl);
 addFormValidator.enableValidation();
-
-
-
-
-// addModalCloseButton.addEventListener("click", () => addPopup.close());
-
-// editForm.addEventListener('submit', handleEditFormSubmit);
-
-// profileEditButton.addEventListener('click', () => {
-//   prefillEditForm(editModal);
-//   openModalWindow(editModal);
-// });
-
-// editModalCloseButton.addEventListener('click', () => closeModalWindow(editModal));
-
-// addForm.addEventListener('submit', handleAddFormSubmit);
-
-// addCardButton.addEventListener('click', () => openModalWindow(addModal));
-
-// addModalCloseButton.addEventListener('click', () => closeModalWindow(addModal));
-
-// previewModalCloseButton.addEventListener('click', () => closeModalWindow(previewModal));
-
-// initialCards.forEach((card) => {
-//   renderCard(card);
-// });
-
-
-
-
-/* -------------------------------- Functions ------------------------------- */
-
-
-// function handleEditFormSubmit(evt) {
-//   evt.preventDefault();
-//   name.textContent = nameInput.value;
-//   description.textContent = descriptionInput.value;
-//   closeModalWindow(editModal);
-//   editFormValidator.toggleButtonState();
-// }
-
-// function handleAddFormSubmit(evt) {
-//   evt.preventDefault();
-//   const card = {
-//     title: titleInput.value,
-//     image: imageUrlInput.value,
-//   }
-  
-
-//   renderCard(card);
-//   closeModalWindow(addModal);
-//   addForm.reset();
-//   addFormValidator.toggleButtonState();
-// }
-
-// function renderCard(card) {
-//   const cardElement = new Card(card, cardSelector);
-//   addCard(cardElement, placesList)
-//   return cardElement;
-// }
-
-// function addCard(card, placesList) {
-//   placesList.prepend(card.getView());
-// }
-
-// const userInfo = new UserInfo({
-//   nameSelector: popupEditUserInfo.nameSelector,
-//   aboutSelector: popupEditUserInfo.aboutSelector,
-// });

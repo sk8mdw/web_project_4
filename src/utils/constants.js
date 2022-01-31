@@ -56,26 +56,5 @@ export const initialCards = [
     closeButton: document.querySelector(".popup__close-button"),
   }
 
-/* -------------------------------- Wrappers -------------------------------- */
-// const editForm = editModal.querySelector(".popup__form");
-// const addForm = addModal.querySelector(".popup__form");
-// const placesList = document.querySelector('.places__list');
-
-/* -------------------------- Buttons and DOM nodes ------------------------- */
-
-;
-const previewModal = document.querySelector('.popup_type_preview');
-const previewModalCloseButton = previewModal.querySelector(".popup__close-button");
-
-
-/* -------------------------------- Form data ------------------------------- */
-// const nameInput = editForm.querySelector(".popup__input_text_name");
-// const descriptionInput = editForm.querySelector(".popup__input_text_description");
-// const titleInput = addForm.querySelector('.popup__input_text_title');
-// const imageUrlInput = addForm.querySelector('.popup__input_text_image-url');
-
-// const cardSelector = document.querySelector("#cardTemplate");
-
-
 
  

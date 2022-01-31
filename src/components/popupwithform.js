@@ -10,12 +10,12 @@ export default class PopupWithForm extends Popup {
   }
 
   getInputValues() {
-    const inputValues = {};
+    const inputValue = {};
     this._inputList.forEach((input) => {
-      inputValues[input.name] = input.value;
-      console.log(input.value);
+      inputValue[input.name] = input.value;
+      console.log(inputValue.image);
     });
-    return inputValues;
+    return inputValue;
   }
 
   setEventListeners = () => {
