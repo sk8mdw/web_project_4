@@ -26,33 +26,7 @@ export const initialCards = [
     }
   ];
 
-  /* -------------------------------- Wrappers -------------------------------- */
-const editModal = document.querySelector(".popup_type_edit");
-const editForm = editModal.querySelector(".popup__form");
-const addModal = document.querySelector(".popup_type_add");
-const addForm = addModal.querySelector(".popup__form");
-const placesList = document.querySelector('.places__list');
-
-/* -------------------------- Buttons and DOM nodes ------------------------- */
-const profileEditButton = document.querySelector(".profile__edit-button");
-const editModalCloseButton = editModal.querySelector(".popup__close-button");
-const name = document.querySelector(".profile__name");
-const description = document.querySelector(".profile__description");
-const addCardButton = document.querySelector('.profile__add-button');
-const addModalCloseButton = addModal.querySelector(".popup__close-button");
-const previewModal = document.querySelector('.popup_type_preview');
-const previewModalCloseButton = previewModal.querySelector(".popup__close-button");
-
-
-/* -------------------------------- Form data ------------------------------- */
-const nameInput = editForm.querySelector(".popup__input_text_name");
-const descriptionInput = editForm.querySelector(".popup__input_text_description");
-const titleInput = addForm.querySelector('.popup__input_text_title');
-const imageUrlInput = addForm.querySelector('.popup__input_text_image-url');
-
-// const cardSelector = document.querySelector("#cardTemplate");
-
-export const formValidationSettings = {
+  export const formValidationSettings = {
     inputSelector: ".popup__input",
     submitButtonSelector: ".popup__save-button",
     inactiveButtonClass: "popup__save-button_type_disabled",
@@ -64,12 +38,44 @@ export const formValidationSettings = {
       cardSection: '.places__list',
       cardTemplate: '#cardTemplate',
       previewPopup: '.popup_type_preview',
+      
+      addModal: document.querySelector(".popup_type_add"),
   };
 
   export const popupEditUser = {
-
+    editModal: ".popup_type_edit",
+    nameSelector: ".profile__name",
+    descriptionSelector: ".profile__description",
+    editButton: document.querySelector(".profile__edit-button"),
+    closeButton: document.querySelector(".popup__close-button"),
   }
 
   export const popupAddCard = {
-
+    addModal: ".popup_type_add",
+    addButton: document.querySelector('.profile__add-button'),
+    closeButton: document.querySelector(".popup__close-button"),
   }
+
+/* -------------------------------- Wrappers -------------------------------- */
+// const editForm = editModal.querySelector(".popup__form");
+// const addForm = addModal.querySelector(".popup__form");
+// const placesList = document.querySelector('.places__list');
+
+/* -------------------------- Buttons and DOM nodes ------------------------- */
+
+;
+const previewModal = document.querySelector('.popup_type_preview');
+const previewModalCloseButton = previewModal.querySelector(".popup__close-button");
+
+
+/* -------------------------------- Form data ------------------------------- */
+// const nameInput = editForm.querySelector(".popup__input_text_name");
+// const descriptionInput = editForm.querySelector(".popup__input_text_description");
+// const titleInput = addForm.querySelector('.popup__input_text_title');
+// const imageUrlInput = addForm.querySelector('.popup__input_text_image-url');
+
+// const cardSelector = document.querySelector("#cardTemplate");
+
+
+
+ 

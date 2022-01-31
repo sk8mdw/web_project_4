@@ -1,20 +1,20 @@
-class UserInfo {
-    constructor({ NameSelector, titleSelector }) {
-        this._nameElement = document.querySelector(NameSelector);
-        this._titleElement = document.querySelector(titleSelector)
+export default class UserInfo {
+    constructor({ nameSelector, descriptionSelector }) {
+        this._name = document.querySelector(nameSelector);
+        this._description = document.querySelector(descriptionSelector)
     }
 
     getUserInfo = () => {
         return {
-            nameElement: this._nameElement.textContent,
-            titleElement:this._titleElement.textContent,
+            name: this._name.textContent,
+            description: this._description.textContent,
         };
     }
 
-    setUserInfo = ({ nameElement, titleElement})  => {
-        this._nameElement.textContent = nameElement;
-        this._titleElement.textContent = titleElement;
+    setUserInfo = ({ name, description })  => {
+        this._name.textContent = name;
+        this._description.textContent = description;
+        console.log(this._name.textContent);
+        console.log(this._description.textContent);
     }
 }
-
-export default UserInfo;

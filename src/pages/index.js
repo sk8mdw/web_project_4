@@ -4,14 +4,18 @@ import "./index.css";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/card.js";
 import Section from "../components/section.js";
-import PopupWithImage from "../components/popup-with-image.js";
-import PopupWithForm from "../components/popup-with-form.js";
+import PopupWithImage from "../components/popupwithimage.js";
+import PopupWithForm from "../components/popupwithform.js";
 import UserInfo from "../components/user-info.js";
-import { initialCards, formValidationSettings, selectors, } from "../utils/constants.js";
+import { initialCards, formValidationSettings, selectors, popupEditUser, popupAddCard } from "../utils/constants.js";
 
-import { openModalWindow, closeModalWindow } from "../scripts/utils.js";
 
 /* --------------------- Create instances of the classes -------------------- */
+const userInfo = new UserInfo({
+  nameSelector: popupEditUser.nameSelector,
+  descriptionSelector: popupEditUser.descriptionSelector,
+});
+
 const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 cardPreviewPopup.setEventListeners();
 
@@ -20,7 +24,6 @@ const createCard = (card) =>
 new Card({
   data:card, handleCardClick: (imageData) => {
   cardPreviewPopup.open(imageData);
-  console.log(imageData);
   },
 },
 selectors.cardTemplate,
@@ -37,41 +40,80 @@ const cardSection = new Section({
 cardSection.renderItems(initialCards);
 
 
-const modalEditForm = new PopupWithForm(
-  modalEditUserInfo.selector,
+const editForm = new PopupWithForm(
+  popupEditUser.editModal,
   (evt) => {
     evt.preventDefault();
 
-    const inputValue = modalEditForm.getInputValues();
+    const inputValue = editForm.getInputValues();
     userInfo.setUserInfo({
       name: inputValue.name,
-      about: inputValue.about,
+      description: inputValue.description,
     });
 
-    modalEditForm.close();
+    editForm.close();
   },
 );
-modalEditForm.setEventListeners();
+editForm.setEventListeners();
 
-const modalAddForm = new PopupWithForm(
-  modalAddCard.selector,
+const addForm = new PopupWithForm(
+  popupAddCard.addModal,
   (evt) => {
     evt.preventDefault();
 
-    const inputValue = modalAddForm.getInputValues();
+    const inputValue = addForm.getInputValues();
     const cardElement = createCard({
       name: inputValue.title,
-      link: inputValue.link,
+      link: inputValue.image,
     });
     cardSection.addItem(cardElement.getView());
 
-    modalAddForm.close();
+    addForm.close();
   },
 );
-modalAddForm.setEventListeners();
+addForm.setEventListeners();
+
+/* --------------------- Prefill function and constants --------------------- */
+function prefillEditForm(modalWindow) {
+  nameInput.value = profileName.textContent;
+  descriptionInput.value = profileAbout.textContent;
+}
+const profileName = document.querySelector(".profile__name");
+const profileAbout = document.querySelector(".profile__description");
+
+const nameInput = document.querySelector("#owner-name");
+const descriptionInput = document.querySelector("#owner-description");
 
 
 /* ----------------------------- Event listeners ---------------------------- */
+popupEditUser.editButton.addEventListener("click", () => {
+  prefillEditForm(editForm);
+  editForm.open();
+});
+
+// editProfileCloseButton.addEventListener("click", () => editPopup.close());
+
+popupAddCard.addButton.addEventListener("click", () => {
+  // addFormValidator.resetForm();
+  addForm.open();
+});
+
+/* ------------------------------- Validation ------------------------------- */
+
+const editFormEl = document.querySelector('.popup_type_edit');
+const addFormEl = document.querySelector('.popup_type_add');
+
+const editFormValidator = new FormValidator(formValidationSettings, editFormEl);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(formValidationSettings, addFormEl);
+addFormValidator.enableValidation();
+
+
+
+
+// addModalCloseButton.addEventListener("click", () => addPopup.close());
+
 // editForm.addEventListener('submit', handleEditFormSubmit);
 
 // profileEditButton.addEventListener('click', () => {
@@ -93,26 +135,11 @@ modalAddForm.setEventListeners();
 //   renderCard(card);
 // });
 
-/* ------------------------------- Validation ------------------------------- */
-
-// const editFormEl = editModal.querySelector('.popup__form');
-// const addFormEl = addModal.querySelector('.popup__form');
-
-
-// const editFormValidator = new FormValidator(formValidationSettings, editFormEl);
-// editFormValidator.enableValidation();
-
-// const addFormValidator = new FormValidator(formValidationSettings, addFormEl);
-// addFormValidator.enableValidation();
 
 
 
 /* -------------------------------- Functions ------------------------------- */
 
-// function prefillEditForm(modalWindow) {
-//   nameInput.value = name.textContent;
-//   descriptionInput.value = description.textContent;
-// }
 
 // function handleEditFormSubmit(evt) {
 //   evt.preventDefault();
