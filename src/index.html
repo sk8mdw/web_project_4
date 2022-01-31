@@ -7,20 +7,20 @@
     <title>Around the U.S.</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
 </head>
 
 <body class="page">
     <div class="page__wrapper">
 
         <header class="header">
-            <img src="images/logo.svg" class="header__logo" alt="logo image">
+            <img src="<%=require('./images/logo.svg')%>" class="header__logo" alt="logo image">
         </header>
 
         <main>
             <section class="profile">
                 <div class="profile__info">
-                    <img class="profile__image" src="images/mdw_profile_img.jpg" alt="profile image">
+                    <img class="profile__image" src="<%=require('./images/mdw_profile_img.jpg')%>" alt="profile image">
                     <div class="profile__text">
                         <h1 class="profile__name">Mark Worsham</h1>
                         <button type="button" class="button profile__edit-button"></button>
@@ -70,7 +70,7 @@
                 <input type="text" name="title" id="place-name" class="popup__input popup__input_text_title"
                     placeholder="Title" minlength="1" maxlength="30" required>
                 <span class="popup__error" id="place-name-error"></span>
-                <input type="url" name="image-url" id="place-link" class="popup__input popup__input_text_image-url"
+                <input type="url" name="imageurl" id="place-link" class="popup__input popup__input_text_image-url"
                     placeholder="Image Link" required>
                 <span class="popup__error" id="place-link-error"></span>
                 <button type="submit" class="button popup__save-button popup__save-button_type_disabled" id="editSaveButton" disabled>Create</button>
@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <template id="cardTemplate">
+    <template class="cardTemplate" id="cardTemplate">
         <li class="places__item card">
             <button type="button" class="card__delete-button"></button>
             <img class="card__image" src=" " alt=" ">
@@ -96,7 +96,7 @@
             </div>
         </li>
     </template>
-    <script type="module" src="scripts/index.js"></script>
+    <!-- <script type="module" src="scripts/index.js"></script> -->
 
 </body>
 
