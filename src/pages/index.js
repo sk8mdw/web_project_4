@@ -3,10 +3,10 @@ import "./index.css";
 /* ----------------------------- Import classes ----------------------------- */
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/card.js";
-import Section from "../components/section.js";
-import PopupWithImage from "../components/popupwithimage.js";
-import PopupWithForm from "../components/popupwithform.js";
-import UserInfo from "../components/user-info.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 import { initialCards, formValidationSettings, selectors, popupEditUser, popupAddCard } from "../utils/constants.js";
 
 
@@ -52,6 +52,7 @@ const editForm = new PopupWithForm(
     });
 
     editForm.close();
+    editFormValidator.resetValidation();
   },
 );
 editForm.setEventListeners();
@@ -70,17 +71,20 @@ const addForm = new PopupWithForm(
     cardSection.addItem(cardElement.getView());
 
     addForm.close();
+    addFormValidator.resetValidation();
   },
 );
 addForm.setEventListeners();
 
 /* --------------------- Prefill function and constants --------------------- */
 function prefillEditForm(modalWindow) {
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileAbout.textContent;
+  const { name, description } = userInfo.getUserInfo();
+  nameInput.value = name;
+  descriptionInput.value = description;
 }
-const profileName = document.querySelector(".profile__name");
-const profileAbout = document.querySelector(".profile__description");
+
+// const profileName = document.querySelector(".profile__name");
+// const profileAbout = document.querySelector(".profile__description");
 
 const nameInput = document.querySelector("#owner-name");
 const descriptionInput = document.querySelector("#owner-description");
