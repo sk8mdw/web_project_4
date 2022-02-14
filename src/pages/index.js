@@ -6,8 +6,11 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
-import { initialCards, formValidationSettings, selectors, popupEditUser, popupAddCard } from "../utils/constants.js";
+import { formValidationSettings, selectors, popupEditUser, popupEditAvatar, popupAddCard } from "../utils/constants.js";
+import Api from "../components/Api.js";
+import renderLoading from "../utils/utils.js";
 
 
 /* --------------------- Create instances of the classes -------------------- */
@@ -18,6 +21,8 @@ const userInfo = new UserInfo({
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 cardPreviewPopup.setEventListeners();
+
+
 
 
 const createCard = (card) =>
@@ -38,6 +43,8 @@ const cardSection = new Section({
  selectors.cardSection,
 );
 cardSection.renderItems(initialCards);
+
+
 
 
 const editForm = new PopupWithForm(
@@ -88,6 +95,14 @@ function prefillEditForm(modalWindow) {
 
 const nameInput = document.querySelector("#owner-name");
 const descriptionInput = document.querySelector("#owner-description");
+
+const api = new Api({
+  baseUrl: 'https://around.nomoreparties.co/v1/group-12',
+  headers: {
+    authorization: 'acca9dd3-a6a4-4626-88e2-60619602bdf9',
+    'Content-Type': 'application/json',
+  },
+});
 
 
 /* ----------------------------- Event listeners ---------------------------- */
