@@ -43,9 +43,9 @@ const editForm = new PopupWithForm({
   handleFormSubmit: (data) => {
     renderLoading(".popup_type_edit", true);
     api
-      .getUserInfo({
-        name: data.profileName,
-        about: data.profileDescription,
+      .setUserInfo({
+        name: data.name,
+        about: data.description,
       })
       .then((data) => {
         userInfo.setUserInfo({
