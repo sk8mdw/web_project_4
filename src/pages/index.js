@@ -27,6 +27,14 @@ const userInfo = new UserInfo({
 const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 cardPreviewPopup.setEventListeners();
 
+const api = new Api({
+  baseUrl: 'https://around.nomoreparties.co/v1/group-12',
+  headers: {
+    authorization: 'acca9dd3-a6a4-4626-88e2-60619602bdf9',
+    'Content-Type': 'application/json',
+  },
+});
+
 /* -------------------------------------------------------------------------- */
 /*                  Working on user profile and avatar edits                  */
 /* -------------------------------------------------------------------------- */
@@ -35,19 +43,19 @@ const editForm = new PopupWithForm({
   handleFormSubmit: (data) => {
     renderLoading(".popup_type_edit", true);
     api
-      .editUserInfo({
+      .getUserInfo({
         name: data.profileName,
         about: data.profileDescription,
       })
-      .then((info) => {
+      .then((data) => {
         userInfo.setUserInfo({
-          profileName: info.name,
-          profileDescription: info.about,
+          name: data.name,
+          description: data.about,
         });
-        editForm.closeModal();
+        editForm.close();
       })
       .catch((err) =>
-        console.log(`Unable to update profile information: ${err}`)
+        console.warn(`Unable to update profile information: ${err}`)
       )
       .finally(() => {
         renderLoading(".popup_type_edit");
@@ -55,18 +63,19 @@ const editForm = new PopupWithForm({
   },
 });
 
+
 const addForm = new PopupWithForm({
   popupSelector: ".popup_type_add",
   handleFormSubmit: (data) => {
     renderLoading(".popup_type_add", true);
-
     api
-      .addNewCard(data)
+      .addCard(data)
       .then((cardData) => {
         cardSection.addItem(createCard(cardData));
-        addCardPopup.closeModal();
+        addForm.close();
+        console.log(cardData);
       })
-      .catch((err) => console.log(`Unable to add a card: ${err}`))
+      .catch((err) => console.error(`Unable to add a card: ${err}`))
       .finally(() => {
         renderLoading(".popup_type_add");
       });
@@ -109,17 +118,17 @@ const addForm = new PopupWithForm({
 /* -------------------------------------------------------------------------- */
 // const createCard = (card) =>
 // new Card({
-  // data:card, handleCardClick: (imageData) => {
-  // cardPreviewPopup.open(imageData);
-  // },
+// data:card, handleCardClick: (imageData) => {
+// cardPreviewPopup.open(imageData);
+// },
 // },
 // selectors.cardTemplate,
 // );
 
 // const cardSection = new Section({
 //  renderer: (item) => {
-  //  const cardElement = createCard(item);
-  //  cardSection.addItem(cardElement.getView());
+//  const cardElement = createCard(item);
+//  cardSection.addItem(cardElement.getView());
 //  },
 // },
 //  selectors.cardSection,
@@ -132,7 +141,6 @@ const addForm = new PopupWithForm({
 
 
 
-addForm.setEventListeners();
 
 /* -------------------------------------------------------------------------- */
 /*                       Prefill function and constants                       */
@@ -143,30 +151,23 @@ function prefillEditForm(modalWindow) {
   descriptionInput.value = description;
 }
 
-// const profileName = document.querySelector(".profile__name");
-// const profileAbout = document.querySelector(".profile__description");
-
 const nameInput = document.querySelector("#owner-name");
 const descriptionInput = document.querySelector("#owner-description");
-
-const api = new Api({
-  baseUrl: 'https://around.nomoreparties.co/v1/group-12',
-  headers: {
-    authorization: 'acca9dd3-a6a4-4626-88e2-60619602bdf9',
-    'Content-Type': 'application/json',
-  },
-});
 
 
 /* -------------------------------------------------------------------------- */
 /*                               Event listeners                              */
 /* -------------------------------------------------------------------------- */
+editForm.setEventListeners();
+addForm.setEventListeners();
+
 popupEditUser.editButton.addEventListener("click", () => {
-  prefillEditForm(editForm);
-  editForm.open();
+  const currentUserInfo = userInfo.getUserInfo();
+  nameInput.value = currentUserInfo.name;
+  descriptionInput.value = currentUserInfo.description;
+  editForm.open(currentUserInfo);
 });
 
-// editProfileCloseButton.addEventListener("click", () => editPopup.close());
 
 popupAddCard.addButton.addEventListener("click", () => {
   addForm.open();
@@ -184,27 +185,3 @@ editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(formValidationSettings, addFormEl);
 addFormValidator.enableValidation();
-
-
-
-
-
-/* -------------------------------------------------------------------------- */
-/*                            Old editForm routine, will be deleted           */
-/* -------------------------------------------------------------------------- */
-// const editForm = new PopupWithForm(
-  // popupEditUser.editModal,
-  // (evt) => {
-    // evt.preventDefault();
-// 
-    // const inputValue = editForm.getInputValues();
-    // userInfo.setUserInfo({
-      // name: inputValue.name,
-      // description: inputValue.description,
-    // });
-
-    // editForm.close();
-    // editFormValidator.resetValidation();
-  // },
-// );
-// editForm.setEventListeners();
