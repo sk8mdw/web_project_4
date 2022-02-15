@@ -45,7 +45,7 @@
 
     </div>
 
-    <div class="popup popup_type_edit">
+    <div class="popup popup_type_edit" id="popup-type-edit">
         <div class="popup__container">
             <button type="button" class="button popup__close-button"></button>
             <h3 class="popup__title">Edit Profile</h3>
@@ -83,6 +83,30 @@
             <button type="button" class="button popup__close-button"></button>
             <img src=" " alt=" " class="popup__image">
             <h3 class="popup__caption"></h3>
+        </div>
+    </div>
+
+    <div class="popup popup_type_delete">
+        <div class="popup__container">
+            <button type="button" class="popup__close-button" aria-label="Close"></button>
+            <h3 class="popup__title">Are you sure?</h3>
+            <form class="popup__form" id="delete-form" name="deleteForm" novalidate>
+                <button type="submit" class="popup__save-button">Yes</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_type_avatar">
+        <div class="popup__container">
+            <button type="button" class="popup__close-button" aria-label="Close popup"></button>
+            <h3 class="popup__title">Change profile picture</h3>
+            <form class="popup__form" name="popupEditAvatar" novalidate>
+                <!-- <label class="popup__field" for="avatar-input"> -->
+                  <input type="url" class="popup__input" name="link" placeholder="Image Link" required>
+                  <span class="popup__error" id="avatar-input-error"></span>
+                </label>
+                <button type="submit" class="popup__save-button"></button>
+            </form>
         </div>
     </div>
 

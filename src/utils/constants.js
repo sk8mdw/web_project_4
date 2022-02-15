@@ -50,6 +50,14 @@ export const initialCards = [
     closeButton: document.querySelector(".popup__close-button"),
   }
 
+  export const popupEditAvatar = {
+    selector: '.popup_type_avatar',
+    avatarSelector: '.profile__image',
+    button: document.querySelector('.profile__avatar'),
+    form: document.querySelector('.modal_type_avatar .modal__form'),
+    avatarInput: document.querySelector('#avatar-input'),
+  };  
+
   export const popupAddCard = {
     addModal: ".popup_type_add",
     addButton: document.querySelector('.profile__add-button'),
