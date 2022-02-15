@@ -9,7 +9,7 @@ export default class UserInfo {
         return {
             name: this._name.textContent,
             description: this._description.textContent,
-            avatar: this._avatar.src
+            avatar: this._avatar.src,
         };
     }
 

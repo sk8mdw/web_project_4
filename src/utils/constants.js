@@ -51,8 +51,8 @@ export const initialCards = [
   }
 
   export const popupEditAvatar = {
-    selector: '.modal_type_avatar',
-    avatarSelector: '.profile__avatar',
+    selector: '.popup_type_avatar',
+    avatarSelector: '.profile__image',
     button: document.querySelector('.profile__avatar'),
     form: document.querySelector('.modal_type_avatar .modal__form'),
     avatarInput: document.querySelector('#avatar-input'),

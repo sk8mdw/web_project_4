@@ -14,7 +14,7 @@ class Card {
     }
 
     _getTemplate() {
-        const cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
+        const cardElement = this._cardSelector.content.querySelector(".card").cloneNode(true);
         this._deleteButton = cardElement.querySelector(
             '.card__btn-delete',
           );
