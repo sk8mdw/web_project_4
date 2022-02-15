@@ -63,6 +63,25 @@ const editForm = new PopupWithForm({
   },
 });
 
+const avatarPopup = new PopupWithForm({
+  popupSelector: popupEditAvatar.avatarSelector,
+  handleFormSubmission: () => {
+    const avatar = document.querySelector(".profile__image");
+    api
+      .setUserAvatar({
+        avatar: avatar,
+      })
+      .then(() => {
+        avatar.src = avatarInput.value;
+        avatarPopup.resetForm();
+      })
+      .catch((err) => {
+        console.log(`Error: ${err}`);
+      })
+      .finally(() => {});
+  },
+});
+
 
 const addForm = new PopupWithForm({
   popupSelector: ".popup_type_add",

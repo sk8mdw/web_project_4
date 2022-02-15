@@ -38,7 +38,6 @@ export const initialCards = [
       cardSection: '.places__list',
       cardTemplate: '#cardTemplate',
       previewPopup: '.popup_type_preview',
-      
       addModal: document.querySelector(".popup_type_add"),
   };
 
