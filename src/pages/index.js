@@ -63,22 +63,21 @@ const editForm = new PopupWithForm({
   },
 });
 
-const avatarPopup = new PopupWithForm({
-  popupSelector: popupEditAvatar.avatarSelector,
-  handleFormSubmission: () => {
-    const avatar = document.querySelector(".profile__image");
+const avatarEdit = new PopupWithForm({
+  popupSelector: ".popup_type_avatar",
+  handleFormSubmit: (data) => {
+    renderLoading(".popup_type_avatar", true);
     api
-      .setUserAvatar({
-        avatar: avatar,
+      .setUserAvatar({ 
+        avatar: data.avatar })
+      .then((info) => {
+        userInfo.setAvatar({ userAvatar: info.avatar });
+        avatarEdit.close();
       })
-      .then(() => {
-        avatar.src = avatarInput.value;
-        avatarPopup.resetForm();
-      })
-      .catch((err) => {
-        console.log(`Error: ${err}`);
-      })
-      .finally(() => {});
+      .catch((err) => console.warn(`Unable change the user avatar: ${err}`))
+      .finally(() => {
+        renderLoading(".popup_type_avatar");
+      });
   },
 });
 
@@ -106,30 +105,6 @@ const addForm = new PopupWithForm({
 //   addCardPopup.openModal();
 //   addCardValidator.toggleButtonState();
 // });
-
-
-// const popupEditAvatarForm = new PopupWithForm(
-//   popupEditAvatar.selector,
-//   { defaultText: 'Save', updatingText: 'Saving...' },
-//   (formInput) =>
-//     api
-//       .setUserAvatar({ avatar: formInput.link })
-//       .then((data) => {
-//         userInfo.setUserInfo({
-//           name: data.name,
-//           about: data.about,
-//           avatar: data.avatar,
-//         });
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       }),
-// );
-// popupEditAvatarForm.setEventListeners();
-
-// 
-
-
 
 
 /* -------------------------------------------------------------------------- */
@@ -164,11 +139,11 @@ const addForm = new PopupWithForm({
 /* -------------------------------------------------------------------------- */
 /*                       Prefill function and constants                       */
 /* -------------------------------------------------------------------------- */
-function prefillEditForm(modalWindow) {
-  const { name, description } = userInfo.getUserInfo();
-  nameInput.value = name;
-  descriptionInput.value = description;
-}
+// function prefillEditForm(modalWindow) {
+//   const { name, description } = userInfo.getUserInfo();
+//   nameInput.value = name;
+//   descriptionInput.value = description;
+// }
 
 const nameInput = document.querySelector("#owner-name");
 const descriptionInput = document.querySelector("#owner-description");
@@ -178,6 +153,7 @@ const descriptionInput = document.querySelector("#owner-description");
 /*                               Event listeners                              */
 /* -------------------------------------------------------------------------- */
 editForm.setEventListeners();
+avatarEdit.setEventListeners();
 addForm.setEventListeners();
 
 popupEditUser.editButton.addEventListener("click", () => {
@@ -187,6 +163,9 @@ popupEditUser.editButton.addEventListener("click", () => {
   editForm.open(currentUserInfo);
 });
 
+popupEditAvatar.button.addEventListener("click", () => {
+  avatarEdit.open();
+});
 
 popupAddCard.addButton.addEventListener("click", () => {
   addForm.open();
@@ -197,10 +176,14 @@ popupAddCard.addButton.addEventListener("click", () => {
 /* -------------------------------------------------------------------------- */
 
 const editFormEl = document.querySelector('.popup_type_edit');
+const avatarEditEl = document.querySelector('.popup_type_avatar');
 const addFormEl = document.querySelector('.popup_type_add');
 
 const editFormValidator = new FormValidator(formValidationSettings, editFormEl);
 editFormValidator.enableValidation();
+
+const avatarEditValidator = new FormValidator(formValidationSettings, avatarEditEl);
+avatarEditValidator.enableValidation();
 
 const addFormValidator = new FormValidator(formValidationSettings, addFormEl);
 addFormValidator.enableValidation();

@@ -3,7 +3,7 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
-
+  
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -34,7 +34,14 @@ class Api {
       body: JSON.stringify({ name, about }),
     }).then(this._checkResponse);
   }
-
+  
+  setUserAvatar({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({ avatar }),
+    }).then(this._checkResponse);
+  }
 
   addCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
@@ -66,13 +73,6 @@ class Api {
   }
 
 
-  setUserAvatar({ avatar }) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify({ avatar }),
-    }).then(this._checkResponse);
-  }
 
 }
 
