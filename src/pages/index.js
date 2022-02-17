@@ -39,9 +39,9 @@ const api = new Api({
 /*                  Working on user profile and avatar edits                  */
 /* -------------------------------------------------------------------------- */
 const editForm = new PopupWithForm({
-  popupSelector: ".popup_type_edit",
+  popupSelector: popupEditUser.editModal,
   handleFormSubmit: (data) => {
-    renderLoading(".popup_type_edit", true);
+    renderLoading(popupEditUser.editModal, true);
     api
       .setUserInfo({
         name: data.name,
@@ -58,13 +58,13 @@ const editForm = new PopupWithForm({
         console.warn(`Unable to update profile information: ${err}`)
       )
       .finally(() => {
-        renderLoading(".popup_type_edit");
+        renderLoading(popupEditUser.editModal);
       });
   },
 });
 
 const avatarEdit = new PopupWithForm({
-  popupSelector: ".popup_type_avatar",
+  popupSelector: popupEditAvatar.selector,
   handleFormSubmit: (data) => {
     renderLoading(".popup_type_avatar", true);
     api
@@ -83,9 +83,9 @@ const avatarEdit = new PopupWithForm({
 
 
 const addForm = new PopupWithForm({
-  popupSelector: ".popup_type_add",
+  popupSelector: popupAddCard.addModal,
   handleFormSubmit: (data) => {
-    renderLoading(".popup_type_add", true);
+    renderLoading(popupAddCard.addModal, true);
     api
       .addCard(data)
       .then((cardData) => {
@@ -95,7 +95,7 @@ const addForm = new PopupWithForm({
       })
       .catch((err) => console.error(`Unable to add a card: ${err}`))
       .finally(() => {
-        renderLoading(".popup_type_add");
+        renderLoading(popupAddCard.addModal);
       });
   },
 });
