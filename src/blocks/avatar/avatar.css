@@ -1,0 +1,13 @@
+.avatar {
+    position: relative;
+    width: 120px;
+    padding-right: 30px;
+}
+
+.avatar:hover .avatar__overlay {
+    opacity: 1
+}
+
+.avatar:hover .profile__image {
+    opacity: .4;
+}

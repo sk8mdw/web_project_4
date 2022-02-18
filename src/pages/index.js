@@ -35,9 +35,6 @@ const api = new Api({
   },
 });
 
-/* -------------------------------------------------------------------------- */
-/*                  Working on user profile and avatar edits                  */
-/* -------------------------------------------------------------------------- */
 const editForm = new PopupWithForm({
   popupSelector: popupEditUser.editModal,
   handleFormSubmit: (data) => {
@@ -66,7 +63,7 @@ const editForm = new PopupWithForm({
 const avatarEdit = new PopupWithForm({
   popupSelector: popupEditAvatar.selector,
   handleFormSubmit: (data) => {
-    renderLoading(".popup_type_avatar", true);
+    renderLoading(popupEditAvatar.selector, true);
     api
       .setUserAvatar({ 
         avatar: data.avatar })
@@ -76,7 +73,7 @@ const avatarEdit = new PopupWithForm({
       })
       .catch((err) => console.warn(`Unable change the user avatar: ${err}`))
       .finally(() => {
-        renderLoading(".popup_type_avatar");
+        renderLoading(popupEditAvatar.selector);
       });
   },
 });
@@ -107,9 +104,8 @@ const addForm = new PopupWithForm({
 // });
 
 
-/* -------------------------------------------------------------------------- */
-/*                   Disabled to troubleshoot user edit form                  */
-/* -------------------------------------------------------------------------- */
+
+
 const createCard = (card) =>
 new Card({
 data:card, handleCardClick: (imageData) => {

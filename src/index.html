@@ -20,10 +20,18 @@
         <main>
             <section class="profile">
                 <div class="profile__info">
-                    <div class="profile__avatar">
-                        <button type="button" class="profile__avatar_edit-button"></button>
-                      <img class="profile__image" src="<%=require('./images/mdw.jpg')%>" alt="profile image">
+
+
+
+                    <div class="avatar">
+                        <img class="profile__image" src="<%=require('./images/mdw.jpg')%>" alt="profile image">
+                        <div class="avatar__overlay">
+                            <button type="button" class="avatar__edit-button"></button>
+                        </div>
                     </div>
+
+
+
                     <div class="profile__text">
                         <h1 class="profile__name">Mark Worsham</h1>
                         <button type="button" class="button profile__edit-button"></button>
