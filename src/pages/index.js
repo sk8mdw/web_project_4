@@ -110,14 +110,14 @@ const addForm = new PopupWithForm({
 /* -------------------------------------------------------------------------- */
 /*                   Disabled to troubleshoot user edit form                  */
 /* -------------------------------------------------------------------------- */
-// const createCard = (card) =>
-// new Card({
-// data:card, handleCardClick: (imageData) => {
-// cardPreviewPopup.open(imageData);
-// },
-// },
-// selectors.cardTemplate,
-// );
+const createCard = (card) =>
+new Card({
+data:card, handleCardClick: (imageData) => {
+cardPreviewPopup.open(imageData);
+},
+},
+selectors.cardTemplate,
+);
 
 // const cardSection = new Section({
 //  renderer: (item) => {
