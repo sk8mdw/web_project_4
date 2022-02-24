@@ -48,7 +48,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
       about: userData.about,
     });
     // userInfo.setUserInfo(userData);
-    cardList.renderItems(cards);
+    cardList.renderItems(cards.reverse());
   })
   .catch((err) => console.warn('${err}'));
 
@@ -154,7 +154,6 @@ const addForm = new PopupWithForm({
       .then((data) => {
         const newCard = (createCard(data));
         cardList.addItem(newCard.getView());
-        console.log(newCard);
         addForm.close();
       })
       .catch((err) => console.warn(`Unable to add a card: ${err}`))

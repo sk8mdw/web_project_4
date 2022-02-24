@@ -12,9 +12,9 @@ export default class PopupWithImage extends Popup {
   }
 
   open(data) {
-    this._previewImage.src = data.image;
-    this._previewImage.alt = `Photo of ${data.title}`;
-    this._previewImageTitle.textContent = data.title;
+    this._previewImage.src = data.link;
+    this._previewImage.alt = `Photo of ${data.link}`;
+    this._previewImageTitle.textContent = data.name;
     super.open();
   }
 }
