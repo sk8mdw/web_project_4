@@ -35,6 +35,72 @@ const api = new Api({
   },
 });
 
+
+/* -------------------------------------------------------------------------- */
+/*              Working on promise all to get cards and user info             */
+/* -------------------------------------------------------------------------- */
+
+Promise.all([api.getUserInfo(), api.getInitialCards() ])
+  .then(([userData, cards]) => {
+    const { name, about } = userInfo;
+    api.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+    });
+    // userInfo.setUserInfo(userData);
+    cardList.renderItems(cards);
+  })
+  .catch((err) => console.warn('${err}'));
+
+/* -------------------------------------------------------------------------- */
+/*                               another attempt                              */
+/* -------------------------------------------------------------------------- */
+const createCard = (data) => {
+  const card = new Card(
+    {
+      data,
+      handleCardClick: () => {
+        cardPreviewPopup.open(data)
+      },
+      handleDeleteButton: (evt) => {
+        removeCardPopup.open(evt, data._id);
+      },
+      handleLikeButton: (buttonLiked) => {
+        return buttonLiked ? api.addLike(data._id) : api.removeLike(data._id)
+      },
+      userId: userInfo.getUserId(),
+    },
+    selectors.cardTemplate
+  );
+  return card;
+}
+
+
+const cardList = new Section({
+  renderer: (item) => {
+    const newCard = createCard(item);
+    const cardElement = newCard.getView();
+    cardList.addItem(cardElement);
+  },
+},
+selectors.cardSection
+);
+
+
+// api 
+// .getInitialCards()
+// .then((cardData) => {
+//   cardData.forEach((data) => {
+//     cardList.renderItems(createCard(data))
+//   })
+//     console.log(cardData);
+//   })
+//   .catch((err) =>
+//     console.log(`An error occurred adding the initial cards: ${err}`)
+//   );
+
+
+
 const editForm = new PopupWithForm({
   popupSelector: popupEditUser.editModal,
   handleFormSubmit: (data) => {
@@ -44,10 +110,10 @@ const editForm = new PopupWithForm({
         name: data.name,
         about: data.description,
       })
-      .then((data) => {
+      .then((info) => {
         userInfo.setUserInfo({
-          name: data.name,
-          description: data.about,
+          name: info.name,
+          description: info.about,
         });
         editForm.close();
       })
@@ -85,51 +151,37 @@ const addForm = new PopupWithForm({
     renderLoading(popupAddCard.addModal, true);
     api
       .addCard(data)
-      .then((cardData) => {
-        cardSection.addItem(createCard(cardData));
+      .then((data) => {
+        const newCard = (createCard(data));
+        cardList.addItem(newCard.getView());
+        console.log(newCard);
         addForm.close();
-        console.log(cardData);
       })
-      .catch((err) => console.error(`Unable to add a card: ${err}`))
+      .catch((err) => console.warn(`Unable to add a card: ${err}`))
       .finally(() => {
         renderLoading(popupAddCard.addModal);
       });
   },
 });
 
+// const removeCardPopup = new PopupWithFormDelete({
+//   popupSelector: addCardConstants.deleteCardSelector,
 
-// addCardButton.addEventListener("click", () => {
-//   addCardPopup.openModal();
-//   addCardValidator.toggleButtonState();
-// });
+//   handleFormSubmit: (cardElement, cardId) => {
+//     changeLoadingText(true, addCardConstants.deleteCardSelector, "Deleting...");
 
+//     api.deleteCard(cardId).then(() => {
+//       cardElement.remove();
+//       deleteCardModal.close();
 
+//     }).catch((error) => {
+//       console.error(error)
 
-
-const createCard = (card) =>
-new Card({
-data:card, handleCardClick: (imageData) => {
-cardPreviewPopup.open(imageData);
-},
-},
-selectors.cardTemplate,
-);
-
-// const cardSection = new Section({
-//  renderer: (item) => {
-//  const cardElement = createCard(item);
-//  cardSection.addItem(cardElement.getView());
-//  },
-// },
-//  selectors.cardSection,
-// );
-// cardSection.renderItems(initialCards);
-/* -------------------------------------------------------------------------- */
-/*                   Disabled to troubleshoot user edit form                  */
-/* -------------------------------------------------------------------------- */
-
-
-
+//     }).finally(() => {
+//       changeLoadingText(false, addCardConstants.deleteCardSelector, "Delete");
+//     })
+//   }
+// })
 
 
 /* -------------------------------------------------------------------------- */

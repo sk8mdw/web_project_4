@@ -1,22 +1,15 @@
 class Card {
-    constructor(api, data, cardSelector, handleCardClick, currentUserId, deleteSubmitHandler) {
-        this._api = api;
-        this._data - data;
-        this._title = data.title;
-        this._image = data.image;
-        this._cardId = data._id;
-        this._userId = data.userId;
-        this._ownerId = data.owner._id;
-        this._currentUserId = currentUserId;
+    constructor({data, handleCardClick, handleDeleteButton, handleLikeButton}, cardSelector) {
+        this._data = data;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        this._deleteSubmitHandler = deleteSubmitHandler;
+        this._handleDeleteButton = handleDeleteButton;
     }
 
     _getTemplate() {
-        const cardElement = this._cardSelector.content.querySelector(".card").cloneNode(true);
+        const cardElement = document.querySelector(this._cardSelector).content.cloneNode(true);
         this._deleteButton = cardElement.querySelector(
-            '.card__btn-delete',
+            'card__delete-button',
           );
         return cardElement;
     }
