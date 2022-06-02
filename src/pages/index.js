@@ -49,6 +49,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
     });
     // userInfo.setUserInfo(userData);
     cardList.renderItems(cards.reverse());
+    /* -------------------------------------------------------------------------- */
+    /*                    console log cards to check owner data                   */
+    /* -------------------------------------------------------------------------- */
     console.log(cards);
   })
   .catch((err) => console.warn('${err}'));
