@@ -49,6 +49,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
     });
     // userInfo.setUserInfo(userData);
     cardList.renderItems(cards.reverse());
+    console.log(cards);
   })
   .catch((err) => console.warn('${err}'));
 
