@@ -59,6 +59,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
 /* -------------------------------------------------------------------------- */
 /*                               another attempt                              */
 /* -------------------------------------------------------------------------- */
+
+
+let userId;
+
 const createCard = (data) => {
   const card = new Card(
     {
@@ -75,10 +79,10 @@ const createCard = (data) => {
       userId: userInfo.getUserId(),
     },
     selectors.cardTemplate
-  );
-  return card;
-}
-
+    );
+    return card;
+  }
+  
 
 const cardList = new Section({
   renderer: (item) => {
@@ -89,6 +93,7 @@ const cardList = new Section({
 },
 selectors.cardSection
 );
+
 
 
 // api 
