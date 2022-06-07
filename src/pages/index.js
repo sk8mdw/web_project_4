@@ -43,6 +43,7 @@ const api = new Api({
 Promise.all([api.getUserInfo(), api.getInitialCards() ])
   .then(([userData, cards]) => {
     const { name, about } = userInfo;
+    userId = userData._id;
     api.setUserInfo({
       name: userData.name,
       about: userData.about,
@@ -52,7 +53,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
     /* -------------------------------------------------------------------------- */
     /*                    console log cards to check owner data                   */
     /* -------------------------------------------------------------------------- */
-    console.log(cards);
+    console.log(userData);
   })
   .catch((err) => console.warn('${err}'));
 
@@ -61,11 +62,12 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
 /* -------------------------------------------------------------------------- */
 
 
-let userId;
+let userId = null;
 
 const createCard = (data) => {
   const card = new Card(
     {
+      currentId: userId,
       data,
       handleCardClick: () => {
         cardPreviewPopup.open(data)
@@ -76,10 +78,11 @@ const createCard = (data) => {
       handleLikeButton: (buttonLiked) => {
         return buttonLiked ? api.addLike(data._id) : api.removeLike(data._id)
       },
-      userId: userInfo.getUserId(),
+      // userId: userInfo.getUserId(),
     },
     selectors.cardTemplate
     );
+    console.log(userId);
     return card;
   }
   
