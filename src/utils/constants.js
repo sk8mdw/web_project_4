@@ -32,8 +32,11 @@ export const formValidationSettings = {
   export const popupAddCard = {
     addModal: ".popup_type_add",
     addButton: document.querySelector('.profile__add-button'),
-    closeButton: document.querySelector(".popup__close-button"),
+    closeButton: document.querySelector('.popup__close-button'),
   }
-
-
+  
+  export const popupDeleteCard = {
+  deleteCardSelector: ".popup_type_delete",
+  deleteCardButton: ".delete-button",
+ }
  

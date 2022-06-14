@@ -10,7 +10,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
-import { formValidationSettings, selectors, popupEditUser, popupEditAvatar, popupAddCard, initialCards } from "../utils/constants.js";
+import { formValidationSettings, selectors, popupEditUser, popupEditAvatar, popupAddCard, popupDeleteCard } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import { renderLoading } from "../utils/utils.js";
 
@@ -53,7 +53,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
     /* -------------------------------------------------------------------------- */
     /*                    console log cards to check owner data                   */
     /* -------------------------------------------------------------------------- */
-    console.log(userData);
+    // console.log(userData);
   })
   .catch((err) => console.warn('${err}'));
 
@@ -72,9 +72,19 @@ const createCard = (data) => {
       handleCardClick: () => {
         cardPreviewPopup.open(data)
       },
-      handleDeleteButton: (evt) => {
-        removeCardPopup.open(evt, data._id);
-      },
+      handleDeleteButton: () => {
+        removeCardPopup.open(() => {
+          api
+          .removeCard({ _id: data._id })
+          .then(() => {
+            card.deleteCard();
+            removeCardPopup.close();
+          })
+          .catch((err) => {
+            console.log(`There was an issue deleting this card: ${err}`);
+          });
+      });
+    },
       handleLikeButton: (buttonLiked) => {
         return buttonLiked ? api.addLike(data._id) : api.removeLike(data._id)
       },
@@ -82,7 +92,7 @@ const createCard = (data) => {
     },
     selectors.cardTemplate
     );
-    console.log(userId);
+    // console.log(userId);
     return card;
   }
   
@@ -96,21 +106,6 @@ const cardList = new Section({
 },
 selectors.cardSection
 );
-
-
-
-// api 
-// .getInitialCards()
-// .then((cardData) => {
-//   cardData.forEach((data) => {
-//     cardList.renderItems(createCard(data))
-//   })
-//     console.log(cardData);
-//   })
-//   .catch((err) =>
-//     console.log(`An error occurred adding the initial cards: ${err}`)
-//   );
-
 
 
 const editForm = new PopupWithForm({
@@ -175,8 +170,10 @@ const addForm = new PopupWithForm({
   },
 });
 
-// const removeCardPopup = new PopupWithFormDelete({
-//   popupSelector: addCardConstants.deleteCardSelector,
+const removeCardPopup = new PopupWithConfirmation({
+  popupSelector: popupDeleteCard.deleteCardSelector,
+  handleDeleteCard: () => {},
+})
 
 //   handleFormSubmit: (cardElement, cardId) => {
 //     changeLoadingText(true, addCardConstants.deleteCardSelector, "Deleting...");
@@ -192,7 +189,6 @@ const addForm = new PopupWithForm({
 //       changeLoadingText(false, addCardConstants.deleteCardSelector, "Delete");
 //     })
 //   }
-// })
 
 
 /* -------------------------------------------------------------------------- */
@@ -214,6 +210,7 @@ const descriptionInput = document.querySelector("#owner-description");
 editForm.setEventListeners();
 avatarEdit.setEventListeners();
 addForm.setEventListeners();
+removeCardPopup.setEventListeners();
 
 popupEditUser.editButton.addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();

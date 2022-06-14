@@ -1,0 +1,23 @@
+.delete-button {
+    position: relative;
+    max-width: 358px;
+    min-height: 50px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 48px 36px 36.5px;
+    border: none;
+    border-radius: 2px;
+    padding: 0;
+}
+
+@media screen and (max-width: 512px) {
+    .delete-button {
+        width: 238px;
+        margin: 46px 22px 25px;
+        font-size: 14px;
+    }
+}

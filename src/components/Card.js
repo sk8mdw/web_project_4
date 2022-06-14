@@ -15,7 +15,7 @@ class Card {
     _getTemplate() {
         const cardElement = document.querySelector(this._cardSelector).content.cloneNode(true);
         this._deleteButton = cardElement.querySelector(
-            'card__delete-button',
+            '.delete-button',
           );
         return cardElement;
     }
@@ -33,15 +33,15 @@ class Card {
         }   
         this._setupEventListeners();
         
-        console.log(this._ownerId);
-        console.log(this._currentId);
+        // console.log(this._ownerId);
+        // console.log(this._currentId);
         
         return this._element;
     }
 
     _setupEventListeners() {
         this._likeButton.addEventListener('click', () => this._handleLikeButton());
-        this._deleteButton.addEventListener('click', () => this._handleDeleteButton());
+        this._deleteButton.addEventListener('click', () => this.deleteCard());
         this._imageElement.addEventListener('click', () => this._handleCardClick({ name: this._name, link: this._link }));
     }
 
@@ -65,8 +65,10 @@ class Card {
         this._liked.textContent = this._liked.length;
     }
 
-    _handleDeleteButton() {
-        this._deleteSubmitHandler(this._cardId, this._element);
+    // _handleDeleteButton() {
+    //     this._deleteSubmitHandler(this._cardId, this._element);
+    deleteCard() {
+        this._element.remove();
     }
 
     _addLike() {
