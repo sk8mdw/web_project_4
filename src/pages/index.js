@@ -73,7 +73,7 @@ const createCard = (data) => {
         cardPreviewPopup.open(data)
       },
       handleDeleteButton: (cardElement) => {
-        console.log({cardElement});
+        // console.log({cardElement});
         removeCardPopup.open(() => {
           api
           .removeCard(data._id)
@@ -176,20 +176,20 @@ const removeCardPopup = new PopupWithConfirmation({
   handleDeleteCard: () => {},
 })
 
-  deleteSubmitHandler: (cardElement, cardId) => {
-    changeLoadingText(true, addCardConstants.deleteCardSelector, "Deleting...");
+  // deleteSubmitHandler: (cardElement, cardId) => {
+  //   changeLoadingText(true, addCardConstants.deleteCardSelector, "Deleting...");
 
-    api.removeCard(_id).then(() => {
-      cardElement.remove();
-      deleteCardModal.close();
+  //   api.removeCard(_id).then(() => {
+  //     cardElement.remove();
+  //     deleteCardModal.close();
 
-    }).catch((error) => {
-      console.error(error)
+  //   }).catch((error) => {
+  //     console.error(error)
 
-    }).finally(() => {
-      changeLoadingText(false, addCardConstants.deleteCardSelector, "Delete");
-    })
-  }
+  //   }).finally(() => {
+  //     changeLoadingText(false, addCardConstants.deleteCardSelector, "Delete");
+  //   })
+  // }
 
 
 /* -------------------------------------------------------------------------- */
