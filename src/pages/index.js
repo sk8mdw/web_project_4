@@ -93,7 +93,7 @@ const createCard = (data) => {
     },
     selectors.cardTemplate
     );
-    // console.log(userId);
+    console.log(card);
     return card;
   }
   

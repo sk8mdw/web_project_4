@@ -29,7 +29,7 @@ class Card {
         this._imageElement.src = this._link;
         this._imageElement.alt = `Photo of ${this._link}`;
         if (this._currentId !== this._ownerId) {
-            this._deleteButton.classList.remove('card__delete-button');
+            this._deleteButton.classList.add('delete-button_hidden');
         }   
         this._setupEventListeners();
         

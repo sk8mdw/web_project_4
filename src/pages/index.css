@@ -44,3 +44,4 @@
 @import url(../blocks/avatar/__edit-button/avatar__edit-button.css);
 @import url(../blocks/avatar/__overlay/avatar__overlay.css);
 @import url(../blocks/delete/delete-button.css);
+@import url(../blocks/delete/_hidden/delete-button_hidden.css);
