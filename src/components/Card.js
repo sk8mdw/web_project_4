@@ -28,10 +28,10 @@ class Card {
         this._deleteButton = this._element.querySelector(".card__delete-button");
         this._imageElement.src = this._link;
         this._imageElement.alt = `Photo of ${this._link}`;
-        if (this._currentId !== this._ownerId) {
-            this._deleteButton.classList.remove('card__delete-button');
-        }   
-        this._setupEventListeners();
+        // if (this._currentId !== this._ownerId) {
+        //     this._deleteButton.classList.remove('card__delete-button');
+        // }   
+        // this._setupEventListeners();
         
         // console.log(this._ownerId);
         // console.log(this._currentId);
@@ -41,7 +41,7 @@ class Card {
 
     _setupEventListeners() {
         this._likeButton.addEventListener('click', () => this._handleLikeButton());
-        this._deleteButton.addEventListener('click', () => this.deleteCard());
+        this._deleteButton.addEventListener('click', () => this._handleDeleteButton());
         this._imageElement.addEventListener('click', () => this._handleCardClick({ name: this._name, link: this._link }));
     }
 
@@ -65,11 +65,13 @@ class Card {
         this._liked.textContent = this._liked.length;
     }
 
-    // _handleDeleteButton() {
-    //     this._deleteSubmitHandler(this._cardId, this._element);
-    deleteCard() {
-        this._element.remove();
-    }
+    _handleDeleteButton() {
+        this._deleteSubmitHandler(this._cardID, this._element);
+    // deleteCard() {
+        debugger;
+    //     console.log(cardElement);
+        cardElement.remove();
+            }
 
     _addLike() {
         this._api

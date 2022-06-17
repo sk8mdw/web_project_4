@@ -38,5 +38,6 @@ export const formValidationSettings = {
   export const popupDeleteCard = {
   deleteCardSelector: ".popup_type_delete",
   deleteCardButton: ".delete-button",
+  closeButton: document.querySelector('.popup__close-button'),
  }
  
