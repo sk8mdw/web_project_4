@@ -72,12 +72,13 @@ const createCard = (data) => {
       handleCardClick: () => {
         cardPreviewPopup.open(data)
       },
-      handleDeleteButton: () => {
+      handleDeleteButton: (cardElement) => {
+        console.log({cardElement});
         removeCardPopup.open(() => {
           api
-          .removeCard({ _id: data._id })
+          .removeCard(data._id)
           .then(() => {
-            card.deleteCard();
+            cardElement.remove();
             removeCardPopup.close();
           })
           .catch((err) => {
