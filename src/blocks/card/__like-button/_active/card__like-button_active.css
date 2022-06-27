@@ -1,0 +1,5 @@
+.card__like-button_active {
+    background-image: url(../../../../images/like_filled_button.svg) center no-repeat;
+    background-color: #fff;
+    color: #fff; 
+}

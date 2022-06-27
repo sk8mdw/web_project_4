@@ -10,9 +10,3 @@
     opacity: 0.5;
     cursor: pointer;
   }
-  
-  .card__like-button:active,
-  .liked {
-    background-image: url(../../../images/like_filled_button.svg);
-    opacity: 1;
-  }

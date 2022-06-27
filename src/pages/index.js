@@ -85,10 +85,6 @@ const createCard = (data) => {
           });
       });
     },
-      handleLikeButton: (buttonLiked) => {
-        return buttonLiked ? api.addLike(data._id) : api.removeLike(data._id)
-      },
-      // userId: userInfo.getUserId(),
     },
     selectors.cardTemplate
     );
