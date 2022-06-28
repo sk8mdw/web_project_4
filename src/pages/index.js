@@ -42,13 +42,14 @@ const api = new Api({
 
 Promise.all([api.getUserInfo(), api.getInitialCards() ])
   .then(([userData, cards]) => {
-    const { name, about } = userInfo;
+    // const { name, description } = userInfo;
     userId = userData._id;
-    api.setUserInfo({
-      name: userData.name,
-      about: userData.about,
-    });
-    // userInfo.setUserInfo(userData);
+    userInfo.setUserInfo(userData);
+    console.log('userdata', userData);
+    // api.setUserInfo({
+    //   name: userData.name,
+    //   about: userData.about,
+    // });
     cardList.renderItems(cards.reverse());
     /* -------------------------------------------------------------------------- */
     /*                    console log cards to check owner data                   */
@@ -91,7 +92,6 @@ const createCard = (data) => {
         api
         .removeLike(data._id)
         .then((res) => {
-          console.log('res', res);
           card.setLikes(res.likes);
         })
         .catch((err) => {
@@ -113,7 +113,7 @@ const createCard = (data) => {
     },
     selectors.cardTemplate
     );
-    console.log(card);
+    // console.log(card);
     return card;
   }
   
@@ -139,11 +139,14 @@ const editForm = new PopupWithForm({
         about: data.description,
       })
       .then((info) => {
-        userInfo.setUserInfo({
-          name: info.name,
-          description: info.about,
-        });
+        userInfo.setUserInfo(info);
+        console.log('info', info);
         editForm.close();
+
+        // userInfo.setUserInfo({
+        //   name: info.name,
+        //   description: info.about,
+        // });
       })
       .catch((err) =>
         console.warn(`Unable to update profile information: ${err}`)
