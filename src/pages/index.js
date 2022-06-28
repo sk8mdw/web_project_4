@@ -85,6 +85,31 @@ const createCard = (data) => {
           });
       });
     },
+
+    handleLikeButton: () => {
+      if(card.isLiked()) {
+        api
+        .removeLike(data._id)
+        .then((res) => {
+          console.log('res', res);
+          card.setLikes(res.likes);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+      } else {
+        api
+        .addLike(data._id)
+        .then((res) => {
+          console.log('res', res);
+          card.setLikes(res.likes);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+      }
+
+    }
     },
     selectors.cardTemplate
     );
