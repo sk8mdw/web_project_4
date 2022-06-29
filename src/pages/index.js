@@ -142,11 +142,6 @@ const editForm = new PopupWithForm({
         userInfo.setUserInfo(info);
         console.log('info', info);
         editForm.close();
-
-        // userInfo.setUserInfo({
-        //   name: info.name,
-        //   description: info.about,
-        // });
       })
       .catch((err) =>
         console.warn(`Unable to update profile information: ${err}`)
@@ -165,7 +160,8 @@ const avatarEdit = new PopupWithForm({
       .setUserAvatar({ 
         avatar: data.avatar })
       .then((info) => {
-        userInfo.setAvatar({ userAvatar: info.avatar });
+        userInfo.setAvatar(info);
+        console.log('info', info.avatar);
         avatarEdit.close();
       })
       .catch((err) => console.warn(`Unable change the user avatar: ${err}`))
@@ -228,7 +224,8 @@ popupEditUser.editButton.addEventListener("click", () => {
   editForm.open(currentUserInfo);
 });
 
-popupEditAvatar.button.addEventListener("click", () => {
+popupEditAvatar.button.addEventListener("click", (evt) => {
+  evt.preventDefault();
   avatarEdit.open();
 });
 
