@@ -45,6 +45,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards() ])
     // const { name, description } = userInfo;
     userId = userData._id;
     userInfo.setUserInfo(userData);
+    userInfo.setAvatar(userData);
     console.log('userdata', userData);
     // api.setUserInfo({
     //   name: userData.name,
