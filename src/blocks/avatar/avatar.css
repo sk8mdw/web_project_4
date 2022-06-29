@@ -5,7 +5,7 @@
 }
 
 .avatar:hover .avatar__overlay {
-    opacity: 1
+    opacity: 1;
 }
 
 .avatar:hover .profile__image {
