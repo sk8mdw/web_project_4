@@ -42,20 +42,11 @@ const api = new Api({
 
 Promise.all([api.getUserInfo(), api.getInitialCards() ])
   .then(([userData, cards]) => {
-    // const { name, description } = userInfo;
     userId = userData._id;
     userInfo.setUserInfo(userData);
     userInfo.setAvatar(userData);
     console.log('userdata', userData);
-    // api.setUserInfo({
-    //   name: userData.name,
-    //   about: userData.about,
-    // });
     cardList.renderItems(cards.reverse());
-    /* -------------------------------------------------------------------------- */
-    /*                    console log cards to check owner data                   */
-    /* -------------------------------------------------------------------------- */
-    // console.log(userData);
   })
   .catch((err) => console.warn('${err}'));
 
@@ -114,7 +105,6 @@ const createCard = (data) => {
     },
     selectors.cardTemplate
     );
-    // console.log(card);
     return card;
   }
   
@@ -197,15 +187,6 @@ const removeCardPopup = new PopupWithConfirmation({
 })
 
  
-/* -------------------------------------------------------------------------- */
-/*                       Prefill function and constants                       */
-/* -------------------------------------------------------------------------- */
-// function prefillEditForm(modalWindow) {
-//   const { name, description } = userInfo.getUserInfo();
-//   nameInput.value = name;
-//   descriptionInput.value = description;
-// }
-
 const nameInput = document.querySelector("#owner-name");
 const descriptionInput = document.querySelector("#owner-description");
 
