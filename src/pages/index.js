@@ -209,10 +209,12 @@ popupEditUser.editButton.addEventListener("click", () => {
 popupEditAvatar.button.addEventListener("click", (evt) => {
   evt.preventDefault();
   avatarEdit.open();
+  avatarEditValidator.resetValidation();
 });
 
 popupAddCard.addButton.addEventListener("click", () => {
   addForm.open();
+  addFormValidator.resetValidation();
 });
 
 /* -------------------------------------------------------------------------- */
